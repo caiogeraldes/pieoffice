@@ -38,7 +38,7 @@ Usage
 
 """
 
-from tools import get_key
+from .tools import get_key
 
 script = {
     "EGO" : "𔐀",

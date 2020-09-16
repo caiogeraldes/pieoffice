@@ -5,22 +5,13 @@
 This scripts allows the user to convert between the latinized transliteration
 of Armenian and the Armenian Script itself with (almost) simple rules.
 
-The file can be imported as a module and contains the following functions:
-    alpha_to_armenian - returns a converted string in Armenian script from
-    a romanized string.
-    armenian_to_alpha - returns a converted string in romanized linear B from a
-    string in Armenian Script.
-
-It also contains a dictionary:
-    script - contains the equivalences between romanized and Armenian scripts.
-
 Usage
 -----
-
+pie_tk armenian <text>
 
 """
 
-from .tools import get_key
+from tools import get_key
 
 script = {"a": "ա", "b": "բ", "g": "գ", "d": "դ", "e": "ե", "ye": "ե", "z": "զ", "ee": "է", "e'": "ը", "t'": "թ", "zh": "ժ", "i": "ի", "l": "լ", "x": "խ", "c": "ծ", "k": "կ", "h": "հ", "j": "ձ", "g.": "ղ", "l.": "ղ", "ch.": "ճ", "m": "մ", "y": "յ", "n": "ն", "sh": "շ", "o": "ո", "vo": "ո", "ch": "չ", "p": "պ", "jh": "ջ", "r.": "ռ", "s": "ս", "v": "վ", "t": "տ", "r": "ր", "c'": "ց", "w": "ւ", "p'": "փ", "k'": "ք", "o'": "օ", "f": "ֆ", "u": "ու", "ev": "և", "?": "՞", ".": "։", ".'": "՝", ";": "՟", ";'": "՛", "!": "՜", "``": "«", "''": "»", "A": "Ա", "B": "Բ", "G": "Գ", "D": "Դ", "E": "Ե", "YE": "Ե", "Ye": "Ե", "Z": "Զ", "EE": "Է", "E'": "Ը", "T'": "Թ", "ZH": "Ժ", "I": "Ի", "L": "Լ", "X": "Խ", "C": "Ծ", "K": "Կ", "H": "Հ", "J": "Ձ", "G.": "Ղ", "CH.": "Ճ", "M": "Մ", "Y": "Յ", "N": "Ն", "SH": "Շ", "O": "Ո", "VO": "Ո", "Vo": "Ո", "CH": "Չ", "P": "Պ", "JH": "Ջ", "R.": "Ռ", "S": "Ս", "V.": "Վ", "T": "Տ", "R": "Ր", "C'": "Ց", "W": "Ւ", "P'": "Փ", "K'": "Ք", "O'": "Օ", "F": "Ֆ", "U": "Սւ"}
 

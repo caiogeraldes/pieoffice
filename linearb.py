@@ -15,22 +15,24 @@ The file can be imported as a module and contains the following functions:
 It also contains a dictionary:
     script - contains the equivalences between romanized and Linear B scripts.
 
-Usage example:
+Usage
+-----
 
-    > a = ["a-pi-qo-i-ta do-e-ra MUL 32",
-    >      "ko-wa me-zo-e 5 ko-wa me-wi-jo-e 15",
-    >      "ko-wo me-wi-jo-e 4"]
-    > b = [alpha_to_linearb(i) for i in a]
-    > for i in b:
-    >     print(i)
-    + 𐀀𐀠𐀦𐀂𐀲 𐀈𐀁𐀨 𐂁 𐄒𐄈
-    + 𐀒𐀷 𐀕𐀿𐀁 𐄋 𐀒𐀷 𐀕𐀹𐀍𐀁 𐄐𐄋
-    + 𐀒𐀺 𐀕𐀹𐀍𐀁 𐄊
-    > for i in b:
-    >     print(linearb_to_alpha(i))
-    + a-pi-qo-i-ta do-e-ra MUL 32
-    + ko-wa me-zo-e 5 ko-wa me-wi-jo-e 15
-    + ko-wo me-wi-jo-e 4
+> a = ["a-pi-qo-i-ta do-e-ra MUL 32",
+>      "ko-wa me-zo-e 5 ko-wa me-wi-jo-e 15",
+>      "ko-wo me-wi-jo-e 4"]
+> b = [alpha_to_linearb(i) for i in a]
+> for i in b:
+>     print(i)
++ 𐀀𐀠𐀦𐀂𐀲 𐀈𐀁𐀨 𐂁 𐄒𐄈
++ 𐀒𐀷 𐀕𐀿𐀁 𐄋 𐀒𐀷 𐀕𐀹𐀍𐀁 𐄐𐄋
++ 𐀒𐀺 𐀕𐀹𐀍𐀁 𐄊
+> for i in b:
+>     print(linearb_to_alpha(i))
++ a-pi-qo-i-ta do-e-ra MUL 32
++ ko-wa me-zo-e 5 ko-wa me-wi-jo-e 15
++ ko-wo me-wi-jo-e 4
+
 """
 
 from tools import get_key

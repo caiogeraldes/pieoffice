@@ -26,9 +26,10 @@ The typing scheme is as follows:
 
 from pieoffice.tools import get_key
 
+aegean_numbers = {"1": "𐄇", "2": "𐄈", "3": "𐄉", "4": "𐄊", "5": "𐄋", "6": "𐄌", "7": "𐄍", "8": "𐄎", "9": "𐄏", "10": "𐄐", "20": "𐄑", "30": "𐄒", "40": "𐄓", "50": "𐄔", "60": "𐄕", "70": "𐄖", "80": "𐄗", "90": "𐄘", "100": "𐄙", "200": "𐄚", "300": "𐄛", "400": "𐄜", "500": "𐄝", "600": "𐄞", "700": "𐄟", "800": "𐄠", "900": "𐄡", "1000": "𐄢", "2000": "𐄣", "3000": "𐄤", "4000": "𐄥", "5000": "𐄦", "6000": "𐄧", "7000": "𐄨", "8000": "𐄩", "9000": "𐄪", "10000": "𐄫", "20000": "𐄬", "30000": "𐄭", "40000": "𐄮", "50000": "𐄯", "60000": "𐄰", "70000": "𐄱", "80000": "𐄲", "90000": "𐄳", "0":""}
 
 
-def alpha_to_cypriot(input):
+def alpha_to_cypriot(input, numbers=True):
     output = input.replace("-","")
 
     output = output.replace("wa", "𐠲")
@@ -87,13 +88,34 @@ def alpha_to_cypriot(input):
     output = output.replace("o", "𐠃")
     output = output.replace("u", "𐠄")
 
-    return output
+    output = output.replace("V", "𐄾")
+    output = output.replace("M", "𐄸")
+    output = output.replace("N", "𐄹")
+    output = output.replace("T", "𐄼")
+    output = output.replace("P", "𐄺")
+    output = output.replace("Q", "𐄻")
+    output = output.replace("L", "𐄷")
+    output = output.replace("S", "𐄽")
+    output = output.replace("Z", "𐄿")
+
+    output = output.split()
+    if numbers:
+        for i in range(len(output)):
+            if output[i].isnumeric():
+                num_out = ""
+                num = [int(j) for j in output[i]]
+                tens = [10**n for n in range(len(num)-1,-1,-1)]
+                for j in range(len(tens)):
+                    num_out = num_out + aegean_numbers[str(num[j]*tens[j])]
+                output[i] = num_out
+
+    return " ".join(output)
 
 
 if __name__ == "__main__":
        a = """
         si-se
-        o-na-si-la-o
+        o-na-si-la-o 22 P
          """
        b = alpha_to_cypriot(a)
        print(b)

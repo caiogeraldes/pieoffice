@@ -9,7 +9,7 @@ setup(
         packages=find_packages(),
         entry_points={
         'console_scripts': [
-           'pieoffice=pie-office.__main__:main'
+           'pieoffice=pieoffice.__main__:main'
             ]
         },
 )

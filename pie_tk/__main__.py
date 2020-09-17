@@ -7,6 +7,19 @@ A terminal based script converter for ancient (Proto-)Indo-European languages.
 Usage:
     pie_py convert <language> [<text>]
     pie_py rules <language>
+    
+Languages:
+    pie                 Proto-Indo-European
+    linearb             Mycenaean Libear B
+    cypriot             Cypriot Greek Script
+    luwian              Hieroglyphic Luwian
+    armenian            Armenian
+    avestan             Avestan (script)
+    avestantranslit     Avestan (romanized)
+    ogham               Ogham Script
+
+Options:
+    -h or --help        this text
 """
 
 from docopt import docopt

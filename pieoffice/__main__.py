@@ -23,6 +23,7 @@ Languages:
     avestantranslit     Avestan (romanized)
     oldpersian          Old Persian Cuneiform
     ogham               Ogham Script
+    oscan               Oscan (Old Italic Script)
 
 Options:
     -h --help           Show this screen.
@@ -60,6 +61,8 @@ def main():
             from pieoffice.oldpersian import alpha_to_oldpersian as conv
         elif language == "ogham":
             from pieoffice.ogham import alpha_to_ogham as conv
+        elif language == "oscan":
+            from pieoffice.oscan import alpha_to_oscan as conv
         elif language == "cypriot":
             from pieoffice.cypriot import alpha_to_cypriot as conv
 
@@ -93,6 +96,8 @@ def main():
             from pieoffice.oldpersian import __doc__ as doc
         elif language == "ogham":
             from pieoffice.ogham import __doc__ as doc
+        elif language == "oscan":
+            from pieoffice.oscan import __doc__ as doc
         elif language == "cypriot":
             from pieoffice.cypriot import __doc__ as doc
         print(doc)
@@ -111,6 +116,7 @@ def main():
             avestantranslit     Avestan (romanized)
             oldpersian          Old Persian Cuneiform
             ogham               Ogham Script
+            oscan               Oscan (Old Italic Script)
             """
             )
 

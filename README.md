@@ -5,25 +5,25 @@ I am not much of a GUI person, so this comes as a terminal based converter, but 
 Generally, this project will lag behind the `pievim`, since it is being done in a rather hobbist fashion.
 
 So far, the mappings cover:
- - Proto-Indo-European (`pie_tk convert pie <text>`)
+ - Proto-Indo-European (`pieoffice convert pie <text>`)
  <!-- - Vedic: Harvard-Kyoto transliteration to IAST (autoload/ie/vedichk.vim) -->
  <!-- - Old Persian Cuneiform (autoload/ie/oldpersian.vim) -->
  - Avestan:
-     - Script (`pie_tk avestan convert <text>`)
-     - Transliterated (`pie_tk convert avestantranslit <text>`)
+     - Script (`pieoffice avestan convert <text>`)
+     - Transliterated (`pieoffice convert avestantranslit <text>`)
  <!-- - Old Church Slavonic Glagolitic (glagolitic) -->
  <!-- - Oscan Script (autoload/ie/oscan.vim) -->
- - Ogham Script (`pie_tk convert ogham <text>`)
+ - Ogham Script (`pieoffice convert ogham <text>`)
  <!-- - Gothic (autoload/ie/gothic.vim) -->
- - Armenian Script (`pie_tk convert armenian <text>`)
+ - Armenian Script (`pieoffice convert armenian <text>`)
  - Greek:
     <!-- - Polytonic Greek (autoload/ie/polytonicgreek.vim) -->
-    - Mycenaean Linear B Script (`pie_tk convert linearb <text>`)
-    - Cypriot Syllabary (`pie_tk convert cypriot <text>`)
+    - Mycenaean Linear B Script (`pieoffice convert linearb <text>`)
+    - Cypriot Syllabary (`pieoffice convert cypriot <text>`)
  - Anatolian:
-    - Hieroglyphic Luwian (`pie_tk convert luwian <text>`)
-    - Lydian (`pie_tk convert lydian <text>`)
-    - Lycian (`pie_tk convert lycian <text>`)
+    - Hieroglyphic Luwian (`pieoffice convert luwian <text>`)
+    - Lydian (`pieoffice convert lydian <text>`)
+    - Lycian (`pieoffice convert lycian <text>`)
     <!-- - Carian (autoload/ie/carian.vim) -->
 
 # Installation

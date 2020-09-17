@@ -2,8 +2,10 @@
 
 """PIE_py
 
+A terminal based script converter for ancient (Proto-)Indo-European languages.
+
 Usage:
-    pie_py convert <language> [<text>]
+    pie_py convert <language> [<text>] [<lang_options>]
     pie_py rules <language>
 """
 
@@ -19,6 +21,16 @@ def main():
             from luwian import alpha_to_luwian as conv
         elif language == "armenian":
             from armenian import alpha_to_armenian as conv
+        elif language == "avestan":
+            if not arguments["<lang_options>"]:
+                from avestan import alpha_to_avestan as conv
+            elif arguments["<lang_options>"]:
+                if arguments["<lang_options>"] == "translit":
+                    from avestan import alpha_to_avestan_trans as conv
+                else:
+                    from avestan import alpha_to_avestan as conv
+
+
         if arguments['<text>']:
             print(conv(arguments['<text>']))
         else:
@@ -31,6 +43,8 @@ def main():
             from luwian import __doc__ as doc
         elif language == "armenian":
             from armenian import __doc__ as doc
+        elif language == "avestan":
+            from avestan import __doc__ as doc
         print(doc)
 
 if __name__ == "__main__":

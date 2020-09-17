@@ -2,61 +2,64 @@
 
 """ Avestan script converter
 
-The transliteration scheme is as follows:
+If no optional argument is passed, the script converts to Avestan Script.
+Else, you can pass the optional argument translit for converting to
+latin script with macrons and diacritics for Avestan.
+The typing scheme is as follows:
 
-        a		𐬀
-        A		𐬁
-        á		𐬂
-        Á		𐬃
-        ã		𐬄
-        ãã		𐬅
-        æ		𐬆
-        Æ		𐬇
-        e		𐬈
-        E		𐬉
-        o		𐬊
-        O		𐬋
-        i		𐬌
-        I		𐬍
-        u		𐬎
-        U		𐬏
-        k		𐬐
-        x		𐬑
-        X		𐬒
-        xw		𐬓
-        g		𐬔
-        G		𐬕
-        gh		𐬖
-        c		𐬗
-        j		𐬘
-        t		𐬙
-        th		𐬚
-        d		𐬛
-        dh		𐬜
-        T		𐬝
-        p		𐬞
-        f		𐬟
-        b		𐬠
-        B		𐬡
-        ng		𐬢
-        ngh	        𐬣
-        ngw     	𐬤
-        n		𐬥
-        ñ		𐬦
-        N		𐬧
-        m		𐬨
-        M		𐬩
-        Y		𐬪
-        y		𐬫
-        v		𐬬
-        r		𐬭
-        s		𐬯
-        z		𐬰
-        sh		𐬱
-        zh		𐬲
-        shy     	𐬳
-        S		𐬴
-        h		𐬵
+        |   a	    |   a	|   𐬀   |
+        |   A	    |   ā	|   𐬁   |
+        |   á	    |   å	|   𐬂   |
+        |   Á	    |   ā̊	|   𐬃   |
+        |   ã	    |   ą	|   𐬄   |
+        |   ãã	    |   ą̇	|   𐬅   |
+        |   æ	    |   ə	|   𐬆   |
+        |   Æ	    |   ə̄	|   𐬇   |
+        |   e	    |   e	|   𐬈   |
+        |   E	    |   ē	|   𐬉   |
+        |   o	    |   o	|   𐬊   |
+        |   O	    |   ō	|   𐬋   |
+        |   i	    |   i	|   𐬌   |
+        |   I	    |   ī	|   𐬍   |
+        |   u	    |   u	|   𐬎   |
+        |   U	    |   ū	|   𐬏   |
+        |   k	    |   k	|   𐬐   |
+        |   x	    |   x	|   𐬑   |
+        |   X	    |   x́	|   𐬒   |
+        |   xw	    |   xᵛ	|   𐬓   |
+        |   g	    |   g	|   𐬔   |
+        |   G	    |   ġ	|   𐬕   |
+        |   gh	    |   γ	|   𐬖   |
+        |   c	    |   č	|   𐬗   |
+        |   j	    |   ǰ	|   𐬘   |
+        |   t	    |   t	|   𐬙   |
+        |   th	    |   ϑ	|   𐬚   |
+        |   d	    |   d	|   𐬛   |
+        |   dh	    |   δ	|   𐬜   |
+        |   T	    |   t̰	|   𐬝   |
+        |   p	    |   p	|   𐬞   |
+        |   f	    |   f	|   𐬟   |
+        |   b	    |   b	|   𐬠   |
+        |   B	    |   β	|   𐬡   |
+        |   ng	    |   ŋ	|   𐬢   |
+        |   ngh	    |   ŋ́       |   𐬣   |
+        |   ngw     |   ŋᵛ	|   𐬤   |
+        |   n	    |   n	|   𐬥   |
+        |   ñ	    |   ń	|   𐬦   |
+        |   N	    |   ṇ	|   𐬧   |
+        |   m	    |   m	|   𐬨   |
+        |   M	    |   m̨	|   𐬩   |
+        |   Y	    |   ẏ	|   𐬪   |
+        |   y	    |   y	|   𐬫   |
+        |   v	    |   v	|   𐬬   |
+        |   r	    |   r	|   𐬭   |
+        |   s	    |   s	|   𐬯   |
+        |   z	    |   z	|   𐬰   |
+        |   sh	    |   š	|   𐬱   |
+        |   zh	    |   ž	|   𐬲   |
+        |   shy     |   š́	|   𐬳   |
+        |   S	    |   ṣ̌	|   𐬴   |
+        |   h	    |   h	|   𐬵   |
 
 """
 
@@ -147,6 +150,52 @@ def alpha_to_avestan(input):
     output = output.replace("s", "𐬯")
     output = output.replace("z", "𐬰")
     output = output.replace("h", "𐬵")
+
+    return output
+
+
+def alpha_to_avestan_trans(input):
+    output = input
+    output = output.replace("A", "ā")
+    output = output.replace("aa", "ā")
+    output = output.replace("Á", "ā̊")
+    output = output.replace("áá", "ā̊")
+    output = output.replace("á", "å")
+    output = output.replace("Ã", "ą̇")
+    output = output.replace("ãã", "ą̇")
+    output = output.replace("ã", "ą")
+    output = output.replace("ææ", "ə̄")
+    output = output.replace("æ", "ə")
+    output = output.replace("Æ", "ə̄")
+    output = output.replace("ee", "ē")
+    output = output.replace("E", "ē")
+    output = output.replace("oo", "ō")
+    output = output.replace("O", "ō")
+    output = output.replace("I", "ī")
+    output = output.replace("U", "ū")
+    output = output.replace("X", "x́")
+    output = output.replace("xw", "xᵛ")
+    output = output.replace("c", "č")
+    output = output.replace("j", "ǰ")
+    output = output.replace("th", "ϑ")
+    output = output.replace("dh", "δ")
+    output = output.replace("T", "t̰")
+    output = output.replace("B", "β")
+    output = output.replace("ngh", "ŋ́")
+    output = output.replace("ngw", "ŋᵛ")
+    output = output.replace("ng", "ŋ")
+    output = output.replace("gh", "γ")
+    output = output.replace("G", "ġ")
+    output = output.replace("ñ", "ń")
+    output = output.replace("N", "ṇ")
+    output = output.replace("m", "m")
+    output = output.replace("M", "m̨")
+    output = output.replace("Y", "ẏ")
+    output = output.replace("sh", "š")
+    output = output.replace("zh", "ž")
+    output = output.replace("shy", "š́")
+    output = output.replace("S", "ṣ̌")
+    
 
     return output
 

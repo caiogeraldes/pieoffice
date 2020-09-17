@@ -7,6 +7,7 @@ A terminal based script converter for ancient (Proto-)Indo-European languages.
 Usage:
     pieoffice convert <language> [<text>]
     pieoffice rules <language>
+    pieoffice list
     pieoffice --help
     
 Languages:
@@ -75,6 +76,20 @@ def main():
         elif language == "cypriot":
             from pieoffice.cypriot import __doc__ as doc
         print(doc)
+
+    if arguments['list']:
+        print("""Languages:
+            pie                 Proto-Indo-European
+            linearb             Mycenaean Libear B
+            cypriot             Cypriot Greek Script
+            luwian              Hieroglyphic Luwian
+            armenian            Armenian
+            avestan             Avestan (script)
+            avestantranslit     Avestan (romanized)
+            ogham               Ogham Script
+            """
+            )
+
 
 if __name__ == "__main__":
     main()

@@ -15,6 +15,8 @@ def main():
     arguments = docopt(__doc__)
     if arguments["convert"]:
         language = arguments["<language>"]
+        if language == "pie":
+            from pie import alpha_to_pie as conv
         if language == "linearb":
             from linearb import alpha_to_linearb as conv
         elif language == "luwian":
@@ -37,6 +39,8 @@ def main():
             print("Insira um texto")
     elif arguments['rules']:
         language = arguments["<language>"]
+        if language == "pie":
+            from pie import __doc__ as doc
         if language == "linearb":
             from linearb import __doc__ as doc
         elif language == "luwian":

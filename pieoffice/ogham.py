@@ -5,43 +5,16 @@
 If no optional argument is passed, the script converts to Ogham Script.
 The typing scheme is as follows:
 
-    b           ᚁ " BEITH
-    l           ᚂ " LUIS
-    w           ᚃ " FEARN
-    s           ᚄ " SAIL
-    n           ᚅ " NION
-    j           ᚆ " UATH
-    h           ᚆ " UATH
-    d           ᚇ " DAIR
-    t           ᚈ " TINNE
-    k           ᚉ " COLL
-    kw          ᚊ " CEIRT
-    c           ᚉ " COLL
-    cw          ᚊ " CEIRT
-    m           ᚋ " MUIN
-    g           ᚌ " GORT
-    gw          ᚍ " NGEADAL
-    S           ᚎ " STRAIF
-    r           ᚏ " RUIS
-    a           ᚐ " AILM
-    o           ᚑ " ONN
-    u           ᚒ " UR
-    e           ᚓ " EADHADH
-    i           ᚔ " IODHADH
-    ,ear,       ᚕ " EABHADH
-    ,or,        ᚖ " OR
-    ,uilleann,  ᚗ " UILLEANN
-    ,ifin,      ᚘ " IFIN
-    ,eam,       ᚙ " EAMHANCHOLL
-    ,peith,     ᚚ " PEITH
-    >           ᚛
-    <           ᚜
+    | b           ᚁ | l           ᚂ | w           ᚃ | s           ᚄ 
+    | n           ᚅ | j           ᚆ | h           ᚆ | d           ᚇ 
+    | t           ᚈ | k           ᚉ | kw          ᚊ | c           ᚉ 
+    | cw          ᚊ | m           ᚋ | g           ᚌ | gw          ᚍ 
+    | S           ᚎ | r           ᚏ | a           ᚐ | o           ᚑ 
+    | u           ᚒ | e           ᚓ | i           ᚔ | ,ear,       ᚕ 
+    | ,or,        ᚖ | ,uilleann,  ᚗ | ,ifin,      ᚘ | ,eam,       ᚙ 
+    | ,peith,     ᚚ | >           ᚛ | <           ᚜
 
 """
-
-from pieoffice.tools import get_key
-
-
 
 def alpha_to_ogham(input):
     output = input
@@ -78,7 +51,6 @@ def alpha_to_ogham(input):
     output = output.replace("i", "ᚔ")
     output = output.replace(">", "᚛")
     output = output.replace("<", "᚜")
-
 
     return output
 

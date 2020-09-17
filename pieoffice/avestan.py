@@ -21,10 +21,6 @@ The typing scheme is as follows:
 
 """
 
-from pieoffice.tools import get_key
-
-
-
 def alpha_to_avestan(input):
     """ Converts text in Latin Alphabet to Avestan Script
 

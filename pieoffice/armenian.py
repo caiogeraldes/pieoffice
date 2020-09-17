@@ -23,9 +23,6 @@ pieoffice armenian <text>
 
 """
 
-from pieoffice.tools import get_key
-
-
 def alpha_to_armenian(input):
     """ Converts text in Latin Alphabet to Armenian Script
 
@@ -155,39 +152,6 @@ def alpha_to_armenian(input):
 
     return output
 
-def armenian_to_alpha(input):
-    """ Converts text in Armenian Script to Latin Alphabet
-
-    Some errors might occur if a syllable has multiple values.
-
-    Parameters
-    ----------
-    input : str
-        Text input in <++> Script
-
-    Returns
-    -------
-    output : str
-        Transliterated text in Latin Alphabet
-
-    Usage
-    -----
-    
-    > armenian_to_alpha("<++>")
-    + 
-
-    """
-    output = []
-    for word in input.split():
-        word_out = ""
-        for letter in [let for let in word]:
-            if get_key(letter, script):
-                word_out = word_out + get_key(letter, script)
-            else:
-                word_out = word_out + letter
-        output.append(word_out)
-
-    return " ".join(output)
 
 if __name__ == "__main__":
        a = """

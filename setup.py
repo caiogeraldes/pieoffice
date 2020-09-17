@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(
-        name="pie_tk",
+        name="pie-office",
         version="1.0",
         license="MIT",
         author="Caio Geraldes",
@@ -9,7 +9,7 @@ setup(
         packages=find_packages(),
         entry_points={
         'console_scripts': [
-           'pie_tk=pie_tk.__main__:main'
+           'pie-office=pie-office.__main__:main'
             ]
         },
 )

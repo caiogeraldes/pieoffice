@@ -10,7 +10,7 @@ frequent one.  Glyphs with unknown value should be written with an asterisk
 followed by the number (3 digits, including the 0).
 
 Example:
-    > pie_tk convert luwian "MAGNUS.REX MAGNUS-TONITRUS MAGNUS.REX HEROS ka-ra-ka-mi-sà REGIO REX || X-pa-VIR-ti-sa MAGNUS.REX HEROS INFANS-ní-mu-za || wa-tu-tá-a CORNU-ra-ti REGIO LIS arha.-SPHINX || *273"
+    > pie-office convert luwian "MAGNUS.REX MAGNUS-TONITRUS MAGNUS.REX HEROS ka-ra-ka-mi-sà REGIO REX || X-pa-VIR-ti-sa MAGNUS.REX HEROS INFANS-ní-mu-za || wa-tu-tá-a CORNU-ra-ti REGIO LIS arha.-SPHINX || *273"
     >>> 𔐒 𔖙𔓢 𔐒 𔐕 𔕢𔗷𔗧𔖻𔑶 𔔆 𔐑 || X𔕸𔕠𔑣𔗔 𔐒 𔐕 𔐰𔓵𔑾𔖪 || 𔗬𔑢𔐞𔗷 𔒂𔖱𔑣 𔔆 𔐘 𔓹𔒒 || 𔔴
 
 Included graphic marks:
@@ -22,7 +22,7 @@ Included graphic marks:
 
 """
 
-from pie_tk.tools import get_key
+from pie-office.tools import get_key
 
 script = {
     "EGO" : "𔐀",

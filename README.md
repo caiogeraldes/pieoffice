@@ -1,4 +1,4 @@
-# PIE_tk: A terminal based script converter for ancient (Proto-)Indo-European languages.
+# PIE-Office: A terminal based script converter for ancient (Proto-)Indo-European languages.
 
 This application is a tentative to convert my editor-based keybinding plugins for typing ancient Indo-European languages `pievim` and `pie-macs` to a standalone application.
 I am not much of a GUI person, so this comes as a terminal based converter, but it will hopefully be more useful for those not using `vim` or `emacs`.

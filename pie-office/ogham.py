@@ -39,7 +39,7 @@ The typing scheme is as follows:
 
 """
 
-from pie_tk.tools import get_key
+from pie-office.tools import get_key
 
 
 

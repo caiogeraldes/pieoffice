@@ -5,7 +5,7 @@
 A terminal based script converter for ancient (Proto-)Indo-European languages.
 
 Usage:
-    pie_py convert <language> [<text>] [<lang_options>]
+    pie_py convert <language> [<text>]
     pie_py rules <language>
 """
 
@@ -24,19 +24,15 @@ def main():
         elif language == "armenian":
             from armenian import alpha_to_armenian as conv
         elif language == "avestan":
-            if not arguments["<lang_options>"]:
-                from avestan import alpha_to_avestan as conv
-            elif arguments["<lang_options>"]:
-                if arguments["<lang_options>"] == "translit":
-                    from avestan import alpha_to_avestan_trans as conv
-                else:
-                    from avestan import alpha_to_avestan as conv
-
+            from avestan import alpha_to_avestan as conv
+        elif language == "avestantranslit":
+            from avestan import alpha_to_avestan_trans as conv
 
         if arguments['<text>']:
             print(conv(arguments['<text>']))
         else:
             print("Insira um texto")
+
     elif arguments['rules']:
         language = arguments["<language>"]
         if language == "pie":

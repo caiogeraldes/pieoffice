@@ -3,44 +3,22 @@
 """ PIE converter
 
 The transliteration scheme is close to the Harvard-Kyoto for Sanskrit:
-	A		ā
-	I		ī
-	U		ū
-	R		r̥
-	RR		r̥̄
-	lR		l̥
-	lRR	        l̥̄
-	A/		ā́
-	I/		ī́
-	U/		ū́
-	R/		ŕ̥
-	RR/             r̥̄́
-	lR/             ĺ̥
-	lRR/            l̥̄́
-	c		k̑
-	cw		kʷ
-	kw		kʷ
-	j		ĝ
-	jw		gʷ
-	bh		bʰ
-	dh		dʰ
-	jh		ĝʰ
-	gh		gʰ
-	gw		gʷ
-	gwh	        gʷʰ
-	h1		h₁
-	h2		h₂
-	h3		h₃
-	y		i̯
-	w		u̯
-	E		ē
-	O		ō
-	E/		ḗ
-	É		ḗ
-	O/		ṓ
-	Ó		ṓ
-	M		m̥
-	N		n̥
+
+      -----------------------------------------------
+      | A	ā   |   I	 ī   |  U	ū   |
+      | R	r̥   |   RR	 r̥̄   |  lR	l̥   |
+      | lRR     l̥̄   |   A/	 ā́   |  I/	ī́   |
+      | U/	ū́   |   R/       ŕ̥   |  RR/     r̥̄́   |
+      | lR/     ĺ̥   |   lRR/     l̥̄́   |  c	k̑   |
+      | cw	k̑ʷ  |   kw	 kʷ  |  j	ĝ   |
+      | jw	gʷ  |   bh	 bʰ  |  dh	dʰ  |
+      | jh	ĝʰ  |   gh	 gʰ  |  gw	gʷ  |
+      | gwh     gʷʰ |   h1	 h₁  |  h2	h₂  |
+      | h3	h₃  |   y	 i̯   |  w	u̯   |
+      | E	ē   |   O	 ō   |  E/	ḗ   |
+      | É	ḗ   |   O/	 ṓ   |  Ó	ṓ   |
+      | M	m̥   |   N	 n̥   |              |
+      -----------------------------------------------
 
 """
 

@@ -7,6 +7,7 @@ A terminal based script converter for ancient (Proto-)Indo-European languages.
 Usage:
     pieoffice convert <language> [<text>]
     pieoffice rules <language>
+    pieoffice --help
     
 Languages:
     pie                 Proto-Indo-European

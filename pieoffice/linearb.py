@@ -8,6 +8,8 @@ upper-case. The only exception for said rule are the gendered logograms, which
 should be followed without space by a f or m. Glyphs with unknown value should
 be written with an asterisk followed by the number (2 or 3 digits).
 
+This conversion scheme supports Aegean numbers and measurements.
+
 """
 
 from pieoffice.tools import get_key, aegean_numbers

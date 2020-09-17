@@ -21,6 +21,7 @@ The typing scheme is as follows:
 | ksa     𐠷   |   kse     𐠸   |               |               |             |
 -----------------------------------------------------------------------------
 
+This conversion scheme supports Aegean numbers and measurements.
 
 """
 

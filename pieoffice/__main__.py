@@ -5,8 +5,8 @@
 A terminal based script converter for ancient (Proto-)Indo-European languages.
 
 Usage:
-    pie-office convert <language> [<text>]
-    pie-office rules <language>
+    pieoffice convert <language> [<text>]
+    pieoffice rules <language>
     
 Languages:
     pie                 Proto-Indo-European
@@ -33,21 +33,21 @@ def main():
     if arguments["convert"]:
         language = arguments["<language>"]
         if language == "pie":
-            from pie-office.pie import alpha_to_pie as conv
+            from pieoffice.pie import alpha_to_pie as conv
         if language == "linearb":
-            from pie-office.linearb import alpha_to_linearb as conv
+            from pieoffice.linearb import alpha_to_linearb as conv
         elif language == "luwian":
-            from pie-office.luwian import alpha_to_luwian as conv
+            from pieoffice.luwian import alpha_to_luwian as conv
         elif language == "armenian":
-            from pie-office.armenian import alpha_to_armenian as conv
+            from pieoffice.armenian import alpha_to_armenian as conv
         elif language == "avestan":
-            from pie-office.avestan import alpha_to_avestan as conv
+            from pieoffice.avestan import alpha_to_avestan as conv
         elif language == "avestantranslit":
-            from pie-office.avestan import alpha_to_avestan_trans as conv
+            from pieoffice.avestan import alpha_to_avestan_trans as conv
         elif language == "ogham":
-            from pie-office.ogham import alpha_to_ogham as conv
+            from pieoffice.ogham import alpha_to_ogham as conv
         elif language == "cypriot":
-            from pie-office.cypriot import alpha_to_cypriot as conv
+            from pieoffice.cypriot import alpha_to_cypriot as conv
 
 
         if arguments['<text>']:
@@ -60,19 +60,19 @@ def main():
     if arguments['rules'] or rules:
         language = arguments["<language>"]
         if language == "pie":
-            from pie-office.pie import __doc__ as doc
+            from pieoffice.pie import __doc__ as doc
         if language == "linearb":
-            from pie-office.linearb import __doc__ as doc
+            from pieoffice.linearb import __doc__ as doc
         elif language == "luwian":
-            from pie-office.luwian import __doc__ as doc
+            from pieoffice.luwian import __doc__ as doc
         elif language == "armenian":
-            from pie-office.armenian import __doc__ as doc
+            from pieoffice.armenian import __doc__ as doc
         elif language == "avestan" or language == "avestantranslit":
-            from pie-office.avestan import __doc__ as doc
+            from pieoffice.avestan import __doc__ as doc
         elif language == "ogham":
-            from pie-office.ogham import __doc__ as doc
+            from pieoffice.ogham import __doc__ as doc
         elif language == "cypriot":
-            from pie-office.cypriot import __doc__ as doc
+            from pieoffice.cypriot import __doc__ as doc
         print(doc)
 
 if __name__ == "__main__":

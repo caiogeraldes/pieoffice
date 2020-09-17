@@ -1,6 +1,6 @@
 #! /usr/bin/env python3
 
-""" Lycian converter
+""" Carian converter
 
 The transliteration scheme is as follows
 
@@ -18,7 +18,7 @@ The transliteration scheme is as follows
 
 """
 
-def alpha_to_lycian(input):
+def alpha_to_carian(input):
     """ 
     Parameters
     ----------
@@ -28,7 +28,7 @@ def alpha_to_lycian(input):
     Returns
     -------
     output : str
-        Transliterated text in Avestan Script
+        Transliterated text in Carian Script
     """
     # print(input.translate(script))
 
@@ -92,5 +92,5 @@ if __name__ == "__main__":
        a = """
        esbe
        """
-       b = alpha_to_lycian(a)
+       b = alpha_to_carian(a)
        print(b)

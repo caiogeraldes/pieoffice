@@ -24,7 +24,7 @@ def alpha_to_lydian(input):
     Returns
     -------
     output : str
-        Transliterated text in Avestan Script
+        Transliterated text in Lydian Script
     """
     # print(input.translate(script))
 

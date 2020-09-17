@@ -21,6 +21,7 @@ Languages:
     armenian            Armenian
     avestan             Avestan (script)
     avestantranslit     Avestan (romanized)
+    oldpersian          Old Persian Cuneiform
     ogham               Ogham Script
 
 Options:
@@ -55,6 +56,8 @@ def main():
             from pieoffice.avestan import alpha_to_avestan as conv
         elif language == "avestantranslit":
             from pieoffice.avestan import alpha_to_avestan_trans as conv
+        elif language == "oldpersian":
+            from pieoffice.oldpersian import alpha_to_oldpersian as conv
         elif language == "ogham":
             from pieoffice.ogham import alpha_to_ogham as conv
         elif language == "cypriot":
@@ -86,6 +89,8 @@ def main():
             from pieoffice.armenian import __doc__ as doc
         elif language == "avestan" or language == "avestantranslit":
             from pieoffice.avestan import __doc__ as doc
+        elif language == "oldpersian":
+            from pieoffice.oldpersian import __doc__ as doc
         elif language == "ogham":
             from pieoffice.ogham import __doc__ as doc
         elif language == "cypriot":
@@ -104,6 +109,7 @@ def main():
             armenian            Armenian
             avestan             Avestan (script)
             avestantranslit     Avestan (romanized)
+            oldpersian          Old Persian Cuneiform
             ogham               Ogham Script
             """
             )

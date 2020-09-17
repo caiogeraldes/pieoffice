@@ -24,7 +24,7 @@ def alpha_to_lycian(input):
     Returns
     -------
     output : str
-        Transliterated text in Avestan Script
+        Transliterated text in Lycian Script
     """
     # print(input.translate(script))
 

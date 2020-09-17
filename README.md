@@ -7,10 +7,10 @@ Generally, this project will lag behind the `pievim`, since it is being done in 
 So far, the mappings cover:
  - Proto-Indo-European (`pieoffice convert pie <text>`)
  <!-- - Vedic: Harvard-Kyoto transliteration to IAST (autoload/ie/vedichk.vim) -->
- <!-- - Old Persian Cuneiform (autoload/ie/oldpersian.vim) -->
  - Avestan:
      - Script (`pieoffice avestan convert <text>`)
      - Transliterated (`pieoffice convert avestantranslit <text>`)
+ - Old Persian Cuneiform (`pieoffice convert oldpersian <text>`)
  <!-- - Old Church Slavonic Glagolitic (glagolitic) -->
  <!-- - Oscan Script (autoload/ie/oscan.vim) -->
  - Ogham Script (`pieoffice convert ogham <text>`)
@@ -24,7 +24,7 @@ So far, the mappings cover:
     - Hieroglyphic Luwian (`pieoffice convert luwian <text>`)
     - Lydian (`pieoffice convert lydian <text>`)
     - Lycian (`pieoffice convert lycian <text>`)
-    <!-- - Carian (autoload/ie/carian.vim) -->
+    - Carian (`pieoffice convert carian <text>`)
 
 # Installation
 

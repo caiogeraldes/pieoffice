@@ -1,4 +1,4 @@
-#! /usr/bin python3
+#! /usr/bin/env python3
 
 """ Linear B script converter
 

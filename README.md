@@ -13,13 +13,13 @@ So far, the mappings cover:
      - Transliterated (`pie_tk convert avestantranslit <text>`)
  <!-- - Old Church Slavonic Glagolitic (glagolitic) -->
  <!-- - Oscan Script (autoload/ie/oscan.vim) -->
- <!-- - Ogham Script (autoload/ie/ogham.vim) -->
+ - Ogham Script (autoload/ie/ogham.vim)
  <!-- - Gothic (autoload/ie/gothic.vim) -->
  - Armenian Script (`pie_tk convert armenian <text>`)
  - Greek:
     <!-- - Polytonic Greek (autoload/ie/polytonicgreek.vim) -->
     - Mycenaean Linear B Script (`pie_tk convert linearb <text>`)
-    <!-- - Cypriot Syllabary (autoload/ie/cypriot.vim) -->
+    - Cypriot Syllabary (autoload/ie/cypriot.vim)
  - Anatolian:
     - Hieroglyphic Luwian (`pie_tk convert luwian <text>`)
     <!-- - Lydian (autoload/ie/lydian.vim) -->

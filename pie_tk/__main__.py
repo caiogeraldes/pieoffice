@@ -13,6 +13,9 @@ from docopt import docopt
 
 def main():
     arguments = docopt(__doc__)
+
+    rules = False
+
     if arguments["convert"]:
         language = arguments["<language>"]
         if language == "pie":
@@ -27,13 +30,20 @@ def main():
             from avestan import alpha_to_avestan as conv
         elif language == "avestantranslit":
             from avestan import alpha_to_avestan_trans as conv
+        elif language == "ogham":
+            from ogham import alpha_to_ogham as conv
+        elif language == "cypriot":
+            from cypriot import alpha_to_cypriot as conv
+
 
         if arguments['<text>']:
             print(conv(arguments['<text>']))
         else:
-            print("Insira um texto")
+            print("Insert a text.")
+            rules = True
 
-    elif arguments['rules']:
+
+    if arguments['rules'] or rules:
         language = arguments["<language>"]
         if language == "pie":
             from pie import __doc__ as doc
@@ -43,8 +53,12 @@ def main():
             from luwian import __doc__ as doc
         elif language == "armenian":
             from armenian import __doc__ as doc
-        elif language == "avestan":
+        elif language == "avestan" or language == "avestantranslit":
             from avestan import __doc__ as doc
+        elif language == "ogham":
+            from ogham import __doc__ as doc
+        elif language == "cypriot":
+            from cypriot import __doc__ as doc
         print(doc)
 
 if __name__ == "__main__":

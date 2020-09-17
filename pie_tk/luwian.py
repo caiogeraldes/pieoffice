@@ -2,39 +2,23 @@
 
 """ Hieroglyphic Luwian script converter
 
-This scripts allows the user to convert between the latinized transliteration
-of Hieroglyphic Luwian and the Hieroglyphic Luwian Script itself with (almost) simple rules.
+Glyphs with known syllabic values should be written in lower-case, syllabically
+and with the proper diacritic or numbered if +4. Glyphs with known logographic 
+values should be written in upper-case. Variants of known glyphs should be
+followed by one or more dots (.), generally the undotted variant is the more
+frequent one.  Glyphs with unknown value should be written with an asterisk 
+followed by the number (3 digits, including the 0).
 
-The file can be imported as a module and contains the following functions:
-    alpha_to_luwian - returns a converted string in Hieroglyphic Luwian script from
-    a romanized string.
-    luwian_to_alpha - returns a converted string in romanized linear B from a
-    string in Hieroglyphic Luwian Script. (!!! WILL RETURN PROBLEMATIC DATA DUE
-    TO DOUBLE READINGS FOR THE SAME GRAPHEME IN HIEROGLYPHIC LUWIAN)
+Example:
+    > pie_tk convert luwian "MAGNUS.REX MAGNUS-TONITRUS MAGNUS.REX HEROS ka-ra-ka-mi-sà REGIO REX || X-pa-VIR-ti-sa MAGNUS.REX HEROS INFANS-ní-mu-za || wa-tu-tá-a CORNU-ra-ti REGIO LIS arha.-SPHINX || *273"
+    >>> 𔐒 𔖙𔓢 𔐒 𔐕 𔕢𔗷𔗧𔖻𔑶 𔔆 𔐑 || X𔕸𔕠𔑣𔗔 𔐒 𔐕 𔐰𔓵𔑾𔖪 || 𔗬𔑢𔐞𔗷 𔒂𔖱𔑣 𔔆 𔐘 𔓹𔒒 || 𔔴
 
-It also contains a dictionary:
-    script - contains the equivalences between romanized and Hieroglyphic Luwian scripts.
-
-Usage
------
-
-> a = ["MAGNUS.REX MAGNUS-TONITRUS MAGNUS.REX HEROS ka-ra-ka-mi-sà REGIO REX",
->      "???-pa-VIR-ti-sa MAGNUS.REX HEROS INFANS-ní-mu-za",
->      "wa-tu-tá-a CORNU-ra-ti REGIO LIS arha'-SPHINX"]
-> b = [alpha_to_luwian(i) for i in a]
-> for i in b:
->     print(i)
-+ 𔐒  𔖙𔓢  𔐒  𔐕  𔗧𔖱𔗧𔖻𔑶  𔔆  𔐑
-+ X𔕸𔕠𔑣𔗔  𔐒  𔐕  𔐰𔓵𔑾𔖪
-+ 𔗬𔑢𔐞𔗷  𔒂𔖱𔑣  𔔆  𔐘  𔓹𔒒
-> for i in b:
->     print(luwian_to_alpha(i)) # NOTICE THE ERRORS
-+ EXPECT ERRORS, THIS FUNCTION IS EXPERIMENTAL
-+ MAGNUS.REX MAGNUS-TONITRUS MAGNUS.REX HEROS ka-ra-ka-4-CAPRA REGIO REX
-+ EXPECT ERRORS, THIS FUNCTION IS EXPERIMENTAL
-+ ???-pa-VIR-PES-sa MAGNUS.REX HEROS INFANS-ní-BOS+MI-za
-+ EXPECT ERRORS, THIS FUNCTION IS EXPERIMENTAL
-+ wa-tu-tá-a CORNU-ra-PES REGIO LIS FINES+ha-SPHINX
+Included graphic marks:
+    "WD" for "𔖵"
+    "WE" for "𔗷"
+    "."  for "𔖲"
+    "<"  for "𔗎"
+    ">"  for "𔗏"
 
 """
 
@@ -88,7 +72,7 @@ script = {
     "*040" : "𔐪",
     "tà" : "𔐫",
     "CAPERE" : "𔐫",
-    "tà'" : "𔐬",
+    "tà." : "𔐬",
     "ta-x" : "𔐭",
     "CAPERE2.CAPERE2" : "𔐭",
     "CAPERE2" : "𔐮",
@@ -112,7 +96,7 @@ script = {
     "*054" : "𔐼",
     "nì" : "𔐽",
     "ká" : "𔐾",
-    "ká'" : "𔐿",
+    "ká." : "𔐿",
     "SUB" : "𔐿",
     "INFRA" : "𔐿",
     "CUM" : "𔑀",
@@ -126,7 +110,7 @@ script = {
     "PONERE" : "𔑇",
     "DARE" : "𔑈",
     "pi" : "𔑈",
-    "pi'" : "𔑉",
+    "pi." : "𔑉",
     "DARE.DARE" : "𔑊",
     "MANDARE" : "𔑊",
     "MANDARE2" : "𔑋",
@@ -175,49 +159,49 @@ script = {
     "EQUUS" : "𔑮",
     "ASINUS" : "𔑯",
     "ta" : "𔑯",
-    "ta'" : "𔑰",
+    "ta." : "𔑰",
     "ASINUS2" : "𔑱",
     "ASINUS2A" : "𔑲",
     "CERVUS" : "𔑳",
     "rú" : "𔑳",
     "CERVUS2" : "𔑴",
-    "rú'" : "𔑴",
-    "rú''" : "𔑵",
+    "rú." : "𔑴",
+    "rú.." : "𔑵",
     "CERVUS3" : "𔑵",
     "CAPRA" : "𔑶",
     "sà" : "𔑶",
-    "sà'" : "𔑷",
+    "sà." : "𔑷",
     "CAPRA2" : "𔑸",
-    "sà''" : "𔑸",
+    "sà.." : "𔑸",
     "CAPRA2A" : "𔑹",
-    "sà'''" : "𔑹",
+    "sà..." : "𔑹",
     "BOS" : "𔑺",
     "u" : "𔑺",
-    "BOS'" : "𔑻",
-    "u'" : "𔑻",
+    "BOS." : "𔑻",
+    "u." : "𔑻",
     "BOS2" : "𔑼",
-    "u''" : "𔑼",
+    "u.." : "𔑼",
     "*106" : "𔑽",
     "BOS+MI" : "𔑾",
     "mu" : "𔑾",
     "muwa" : "𔑾",
-    "mu'" : "𔑿",
-    "muwa'" : "𔑿",
+    "mu." : "𔑿",
+    "muwa." : "𔑿",
     "BOS.MI" : "𔒀",
-    "mu''" : "𔒀",
-    "muwa''" : "𔒀",
+    "mu.." : "𔒀",
+    "muwa.." : "𔒀",
     "BOS2.MI" : "𔒁",
-    "mu'''" : "𔒁",
-    "muwa'''" : "𔒁",
+    "mu..." : "𔒁",
+    "muwa..." : "𔒁",
     "CORNU" : "𔒂",
     "sú" : "𔒂",
     "VITELLUS" : "𔒃",
     "ma-x" : "𔒃",
     "OVIS" : "𔒄",
     "ma" : "𔒄",
-    "ma'" : "𔒅",
+    "ma." : "𔒅",
     "OVIS2" : "𔒆",
-    "ma''" : "𔒆",
+    "ma.." : "𔒆",
     "OVIS3" : "𔒇",
     "LINGERE" : "𔒈",
     "za4" : "𔒈",
@@ -226,7 +210,7 @@ script = {
     "LEPUS" : "𔒋",
     "tapa" : "𔒋",
     "LEPUS2" : "𔒌",
-    "tapa'" : "𔒌",
+    "tapa." : "𔒌",
     "*116" : "𔒍",
     "*117" : "𔒎",
     "*118" : "𔒏",
@@ -236,7 +220,7 @@ script = {
     "*122" : "𔒓",
     "*123" : "𔒔",
     "*124" : "𔒕",
-    "lí'" : "𔒖",
+    "lí." : "𔒖",
     "UNGULA" : "𔒗",
     "li-x" : "𔒗",
     "*126" : "𔒘",
@@ -251,8 +235,8 @@ script = {
     "AVIS4" : "𔒟",
     "ara" : "𔒟",
     "ari" : "𔒟",
-    "ara'" : "𔒠",
-    "ari'" : "𔒠",
+    "ara." : "𔒠",
+    "ari." : "𔒠",
     "AVIS-x" : "𔒡",
     "*135A" : "𔒢",
     "*136" : "𔒣",
@@ -280,7 +264,7 @@ script = {
     "*158" : "𔒹",
     "*159" : "𔒺",
     "VITIS" : "𔒻",
-    "wi'" : "𔒻",
+    "wi." : "𔒻",
     "wi(ya)" : "𔒻",
     "*161" : "𔒼",
     "*162" : "𔒽",
@@ -347,8 +331,8 @@ script = {
     "*205" : "𔓪",
     "*206" : "𔓫",
     "MONS" : "𔓬",
-    "wa5'" : "𔓬",
-    "wi5'" : "𔓬",
+    "wa5." : "𔓬",
+    "wi5." : "𔓬",
     "LEO+MONS.tu+LEO" : "𔓭",
     "*208" : "𔓮",
     "i" : "𔓯",
@@ -365,7 +349,7 @@ script = {
     "FINES" : "𔓸",
     "arha" : "𔓸",
     "FINES+ha" : "𔓹",
-    "arha'" : "𔓹",
+    "arha." : "𔓹",
     "*217" : "𔓺",
     "*218" : "𔓻",
     "*219" : "𔓼",
@@ -464,14 +448,14 @@ script = {
     "*293" : "𔕉",
     "THRONUS" : "𔕊",
     "MENSA" : "𔕊",
-    "THRONUS'" : "𔕋",
+    "THRONUS." : "𔕋",
     "MENSA2" : "𔕋",
     "SARPA" : "𔕋",
     "SOL2.THRONUS/MENSA" : "𔕌",
     "*295" : "𔕌",
     "(DEUS)MONS.SARPA" : "𔕍",
     "(DEUS)MONS.MENSA" : "𔕍",
-    "THRONUS''" : "𔕍",
+    "THRONUS.." : "𔕍",
     "*297" : "𔕎",
     "THRONUS2" : "𔕏",
     "SOLIUM" : "𔕐",
@@ -501,8 +485,8 @@ script = {
     "TESHUB" : "𔕥",
     "ta4" : "𔕦",
     "ti4" : "𔕦",
-    "la'" : "𔕦"   ,
-    "li'" : "𔕦",
+    "la." : "𔕦"   ,
+    "li." : "𔕦",
     "*320" : "𔕧",
     "*321" : "𔕨",
     "PURUS" : "𔕩",
@@ -531,16 +515,16 @@ script = {
     "PITHOS.SCUTELLA" : "𔕺",
     "PITHOS" : "𔕺",
     "zì" : "𔕺",
-    "zì'" : "𔕻",
+    "zì." : "𔕻",
     "zà" : "𔕼",
     "za-x" : "𔕽",
-    "PITHOS'" : "𔕾",
+    "PITHOS." : "𔕾",
     "CULTER" : "𔕿",
     "*339" : "𔖀",
     "ANNUS+ANNUS" : "𔖁",
     "VAS" : "𔖂",
     "*342" : "𔖃",
-    "PITHOS''" : "𔖄",
+    "PITHOS.." : "𔖄",
     "CONTRACTUS" : "𔖅",
     "URCEUS" : "𔖆",
     "POCULUM" : "𔖇",
@@ -563,8 +547,8 @@ script = {
     "má" : "𔖘",
     "MAGNUS" : "𔖙",
     "ur" : "𔖙",
-    "u'''" : "𔖚",
-    "mu''''" : "𔖛",
+    "u..." : "𔖚",
+    "mu...." : "𔖛",
     "*365" : "𔖜",
     "OMNIS(+mi)" : "𔖝",
     "tala" : "𔖞",
@@ -584,7 +568,7 @@ script = {
     "*374" : "𔖧",
     "*375" : "𔖨",
     "zi" : "𔖩",
-    "za'" : "𔖩",
+    "za." : "𔖩",
     "za" : "𔖪",
     "LITUUS" : "𔖫",
     "OCCIDENS" : "𔖬",
@@ -598,17 +582,17 @@ script = {
     "lignum" : "𔖰",
     "ra" : "𔖱",
     "ri" : "𔖱",
-    "'" : "𔖲",
+    "." : "𔖲",
     "2" : "𔖳",
-    "2'" : "𔖴",
+    "2." : "𔖴",
     "VIR2" : "𔖵",
     "WD" : "𔖵",
     "VIR2A" : "𔖶",
     "SERVUS" : "𔖷",
     "mì" : "𔖷",
     "3" : "𔖸",
-    "tara'" : "𔖸",
-    "tari'" : "𔖸",
+    "tara." : "𔖸",
+    "tari." : "𔖸",
     "tara" : "𔖹",
     "tari" : "𔖹",
     "DOMINUS" : "𔖺",
@@ -676,8 +660,8 @@ script = {
     "*442" : "𔗯",
     "*443" : "𔗰",
     "*444" : "𔗱",
-    "la''" : "𔗲",
-    "li''" : "𔗲",
+    "la.." : "𔗲",
+    "li.." : "𔗲",
     "lu" : "𔗲",
     "ki" : "𔗳",
     "ni-x" : "𔗴",
@@ -698,7 +682,7 @@ script = {
     "*458" : "𔘁",
     "*459" : "𔘂",
     "*460" : "𔘃",
-    "ma-x'" : "𔘄",
+    "ma-x." : "𔘄",
     "*462" : "𔘅",
     "*463" : "𔘆",
     "*464" : "𔘇",
@@ -743,8 +727,8 @@ script = {
     "hana" : "𔘮",
     "*507" : "𔘯",
     "CURRERE" : "𔘰",
-    "hwi'" : "𔘰",
-    "hwa'" : "𔘰",
+    "hwi." : "𔘰",
+    "hwa." : "𔘰",
     "*509" : "𔘱",
     "*510" : "𔘲",
     "*511" : "𔘳",
@@ -790,8 +774,8 @@ def alpha_to_luwian(input):
     Usage
     -----
 
-    > alpha_to_luwian("EGO-mi u'-ra-hi-li-na")
-    + '𔐀𔖻  𔑻𔖱𔗒𔔹𔐤'
+    > alpha_to_luwian("EGO-mi u.-ra-hi-li-na")
+    + .𔐀𔖻  𔑻𔖱𔗒𔔹𔐤.
 
     """
     output = input.replace("-","")
@@ -1092,7 +1076,7 @@ def alpha_to_luwian(input):
     output = output.replace("BONUS", "𔓀")
     output = output.replace("BOS+MI", "𔑾")
     output = output.replace("BOS.MI", "𔒀")
-    output = output.replace("BOS'", "𔑻")
+    output = output.replace("BOS.", "𔑻")
     output = output.replace("BOS", "𔑺")
     output = output.replace("BOS2.MI", "𔒁")
     output = output.replace("BOS2", "𔑼")
@@ -1263,8 +1247,8 @@ def alpha_to_luwian(input):
     output = output.replace("PES", "𔑣")
     output = output.replace("PISCIS", "𔒥")
     output = output.replace("PITHOS.SCUTELLA", "𔕺")
-    output = output.replace("PITHOS''", "𔖄")
-    output = output.replace("PITHOS'", "𔕾")
+    output = output.replace("PITHOS..", "𔖄")
+    output = output.replace("PITHOS.", "𔕾")
     output = output.replace("PITHOS", "𔕺")
     output = output.replace("POCULUM", "𔖇")
     output = output.replace("PODIUM", "𔔪")
@@ -1308,8 +1292,8 @@ def alpha_to_luwian(input):
     output = output.replace("TELIPINU", "𔒲")
     output = output.replace("TERRA", "𔓤")
     output = output.replace("TESHUB", "𔕥")
-    output = output.replace("THRONUS''", "𔕍")
-    output = output.replace("THRONUS'", "𔕋")
+    output = output.replace("THRONUS..", "𔕍")
+    output = output.replace("THRONUS.", "𔕋")
     output = output.replace("THRONUS2", "𔕏")
     output = output.replace("THRONUS", "𔕊")
     output = output.replace("TONITRUS", "𔓢")
@@ -1345,8 +1329,8 @@ def alpha_to_luwian(input):
     output = output.replace("huru", "𔗹")
     output = output.replace("hu", "𔕙")
     output = output.replace("hwi-x", "𔓎")
-    output = output.replace("hwa'", "𔘰")
-    output = output.replace("hwi'", "𔘰")
+    output = output.replace("hwa.", "𔘰")
+    output = output.replace("hwi.", "𔘰")
     output = output.replace("há-li", "𔓠")
     output = output.replace("há", "𔓟")
     output = output.replace("hí", "𔕘")
@@ -1358,36 +1342,36 @@ def alpha_to_luwian(input):
     output = output.replace("ku", "𔗜")
     output = output.replace("kwa", "𔕰")
     output = output.replace("kwi", "𔕰")
-    output = output.replace("ká'", "𔐿")
+    output = output.replace("ká.", "𔐿")
     output = output.replace("ká", "𔐾")
-    output = output.replace("la''", "𔗲")
-    output = output.replace("la'", "𔕦")
+    output = output.replace("la..", "𔗲")
+    output = output.replace("la.", "𔕦")
     output = output.replace("la+la", "𔓋")
     output = output.replace("la+ra+a", "𔓍")
     output = output.replace("la-x", "𔗽")
-    output = output.replace("li''", "𔗲")
-    output = output.replace("li'", "𔕦")
+    output = output.replace("li..", "𔗲")
+    output = output.replace("li.", "𔕦")
     output = output.replace("li-x", "𔒗")
     output = output.replace("lignum", "𔖰")
     output = output.replace("lu", "𔗲")
     output = output.replace("lá", "𔓇")
     output = output.replace("lì", "𔕇")
-    output = output.replace("lí'", "𔒖")
+    output = output.replace("lí.", "𔒖")
     output = output.replace("lí", "𔓇")
-    output = output.replace("ma''", "𔒆")
-    output = output.replace("ma'", "𔒅")
+    output = output.replace("ma..", "𔒆")
+    output = output.replace("ma.", "𔒅")
     output = output.replace("ma", "𔒄")
-    output = output.replace("ma-x'", "𔘄")
+    output = output.replace("ma-x.", "𔘄")
     output = output.replace("ma-x", "𔒃")
     output = output.replace("mi", "𔖻")
-    output = output.replace("muwa'''", "𔒁")
-    output = output.replace("muwa''", "𔒀")
-    output = output.replace("muwa'", "𔑿")
+    output = output.replace("muwa...", "𔒁")
+    output = output.replace("muwa..", "𔒀")
+    output = output.replace("muwa.", "𔑿")
     output = output.replace("muwa", "𔑾")
-    output = output.replace("mu''''", "𔖛")
-    output = output.replace("mu'''", "𔒁")
-    output = output.replace("mu''", "𔒀")
-    output = output.replace("mu'", "𔑿")
+    output = output.replace("mu....", "𔖛")
+    output = output.replace("mu...", "𔒁")
+    output = output.replace("mu..", "𔒀")
+    output = output.replace("mu.", "𔑿")
     output = output.replace("mu", "𔑾")
     output = output.replace("mà", "𔕖")
     output = output.replace("má", "𔖘")
@@ -1403,12 +1387,12 @@ def alpha_to_luwian(input):
     output = output.replace("pa-x", "𔓐")
     output = output.replace("pari", "𔐎")
     output = output.replace("pi", "𔑈")
-    output = output.replace("pi'", "𔑉")
+    output = output.replace("pi.", "𔑉")
     output = output.replace("pu", "𔕯")
     output = output.replace("pú", "𔗣")
     output = output.replace("ru", "𔗑")
-    output = output.replace("rú''", "𔑵")
-    output = output.replace("rú'", "𔑴")
+    output = output.replace("rú..", "𔑵")
+    output = output.replace("rú.", "𔑴")
     output = output.replace("rú", "𔑳")
     output = output.replace("sa-x", "𔗖")
     output = output.replace("sa4", "𔗆")
@@ -1421,25 +1405,25 @@ def alpha_to_luwian(input):
     output = output.replace("sa", "𔗔")
     output = output.replace("si", "𔓉")
     output = output.replace("su", "𔖢")
-    output = output.replace("sà'''", "𔑹")
-    output = output.replace("sà''", "𔑸")
-    output = output.replace("sà'", "𔑷")
+    output = output.replace("sà...", "𔑹")
+    output = output.replace("sà..", "𔑸")
+    output = output.replace("sà.", "𔑷")
     output = output.replace("sà", "𔑶")
     output = output.replace("sá", "𔗦")
     output = output.replace("sí-x", "𔗾")
     output = output.replace("sú", "𔒂")
     output = output.replace("ta-x", "𔐭")
-    output = output.replace("ta'", "𔑰")
+    output = output.replace("ta.", "𔑰")
     output = output.replace("ta4", "𔕦")
     output = output.replace("ta5", "𔓇")
     output = output.replace("ta6", "𔑛")
     output = output.replace("tala", "𔖞")
     output = output.replace("tana", "𔗢")
-    output = output.replace("tapa'", "𔒌")
+    output = output.replace("tapa.", "𔒌")
     output = output.replace("tapa", "𔒋")
-    output = output.replace("tara'", "𔖸")
+    output = output.replace("tara.", "𔖸")
     output = output.replace("tara", "𔖹")
-    output = output.replace("tari'", "𔖸")
+    output = output.replace("tari.", "𔖸")
     output = output.replace("tari", "𔖹")
     output = output.replace("ta", "𔑯")
     output = output.replace("ti4", "𔕦")
@@ -1448,29 +1432,29 @@ def alpha_to_luwian(input):
     output = output.replace("tu4", "𔔆")
     output = output.replace("tuzzi", "𔔾")
     output = output.replace("tu", "𔑢")
-    output = output.replace("tà'", "𔐬")
+    output = output.replace("tà.", "𔐬")
     output = output.replace("tà", "𔐫")
     output = output.replace("tá", "𔐞")
     output = output.replace("tì", "𔙄")
     output = output.replace("tí", "𔘟")
     output = output.replace("tù", "𔕭")
     output = output.replace("tú", "𔕬")
-    output = output.replace("u'''", "𔖚")
-    output = output.replace("u''", "𔑼")
-    output = output.replace("u'", "𔑻")
+    output = output.replace("u...", "𔖚")
+    output = output.replace("u..", "𔑼")
+    output = output.replace("u.", "𔑻")
     output = output.replace("urhi", "𔗘")
     output = output.replace("ur", "𔖙")
     output = output.replace("us", "𔗚")
     output = output.replace("u", "𔑺")
     output = output.replace("wa5", "𔓩")
-    output = output.replace("wa5'", "𔓬")
+    output = output.replace("wa5.", "𔓬")
     output = output.replace("wa6", "𔓤")
     output = output.replace("wa7", "𔕁")
     output = output.replace("wa9", "𔔻")
     output = output.replace("wi(ya)", "𔒻")
-    output = output.replace("wi'", "𔒻")
+    output = output.replace("wi.", "𔒻")
     output = output.replace("wi5", "𔓩")
-    output = output.replace("wi5'", "𔓬")
+    output = output.replace("wi5.", "𔓬")
     output = output.replace("wi6", "𔓤")
     output = output.replace("wi7", "𔕁")
     output = output.replace("wi9", "𔔻")
@@ -1480,14 +1464,14 @@ def alpha_to_luwian(input):
     output = output.replace("wì", "𔓀")
     output = output.replace("wí", "𔓁")
     output = output.replace("za-x", "𔕽")
-    output = output.replace("za'", "𔖩")
+    output = output.replace("za.", "𔖩")
     output = output.replace("za4", "𔒈")
     output = output.replace("za", "𔖪")
     output = output.replace("zi4", "𔒚")
     output = output.replace("zi", "𔖩")
     output = output.replace("zà", "𔕼")
     output = output.replace("zá", "𔕹")
-    output = output.replace("zì'", "𔕻")
+    output = output.replace("zì.", "𔕻")
     output = output.replace("zì", "𔕺")
     output = output.replace("zí", "𔕠")
     output = output.replace("wa", "𔗬")
@@ -1497,7 +1481,7 @@ def alpha_to_luwian(input):
     output = output.replace("la", "𔓊")
 
     #  Vowels
-    output = output.replace("arha'", "𔓹")
+    output = output.replace("arha.", "𔓹")
     output = output.replace("arha", "𔓸")
     output = output.replace("ha", "𔓷")
     output = output.replace("a+ra", "𔗸")
@@ -1505,9 +1489,9 @@ def alpha_to_luwian(input):
     output = output.replace("a+tá", "𔐷")
     output = output.replace("a-x", "𔗨")
     output = output.replace("ara", "𔒟")
-    output = output.replace("ara'", "𔒠")
+    output = output.replace("ara.", "𔒠")
     output = output.replace("ari", "𔒟")
-    output = output.replace("ari'", "𔒠")
+    output = output.replace("ari.", "𔒠")
     output = output.replace("i(a)", "𔓯")
     output = output.replace("i+ra", "𔓰")
     output = output.replace("i+ri", "𔓰")
@@ -1531,7 +1515,7 @@ def alpha_to_luwian(input):
     output = output.replace("1", "𔗁")
     output = output.replace("1", "𔗃")
     output = output.replace("1", "𔗄")
-    output = output.replace("2'", "𔖴")
+    output = output.replace("2.", "𔖴")
     output = output.replace("2", "𔖳")
     output = output.replace("3", "𔖸")
     output = output.replace("4", "𔖻")
@@ -1539,7 +1523,7 @@ def alpha_to_luwian(input):
     output = output.replace("8", "𔖽")
     output = output.replace("9", "𔖿")
 
-    output = output.replace("'", "𔖲")
+    output = output.replace(".", "𔖲")
 
     output = output.replace("<", "𔗎")
     output = output.replace(">", "𔗏")
@@ -1570,9 +1554,9 @@ def luwian_to_alpha(input, warnings=True):
 
     > luwian_to_alpha("𔐀𔖻  𔑻𔖱𔗒𔔹𔐤")
     + EXPECT ERRORS, THIS FUNCTION IS EXPERIMENTAL
-    + EGO-4 BOS'-ra-hi-li-na
+    + EGO-4 BOS.-ra-hi-li-na
     > luwian_to_alpha("𔐀𔖻  𔑻𔖱𔗒𔔹𔐤", warnings=False) # The output is still wrong
-    + EGO-4 BOS'-ra-hi-li-na
+    + EGO-4 BOS.-ra-hi-li-na
     """
 
     if warnings:
@@ -1601,10 +1585,10 @@ def luwian_to_alpha(input, warnings=True):
 if __name__ == "__main__":
     # a = ["MAGNUS.REX MAGNUS TONITRUS MAGNUS.REX HEROS ka ra ka mi sà REGIO REX",
          # "??? pa VIR ti sa MAGNUS.REX HEROS INFANS ní mu za",
-         # "wa tu tá a CORNU ra ti REGIO LIS arha' SPHINX"]
+         # "wa tu tá a CORNU ra ti REGIO LIS arha. SPHINX"]
     a = ["MAGNUS.REX MAGNUS-TONITRUS MAGNUS.REX HEROS ka-ra-ka-mi-sà REGIO REX",
          "???-pa-VIR-ti-sa MAGNUS.REX HEROS INFANS-ní-mu-za",
-         "wa-tu-tá-a CORNU-ra-ti REGIO LIS arha'-SPHINX"]
+         "wa-tu-tá-a CORNU-ra-ti REGIO LIS arha.-SPHINX"]
     b = [alpha_to_luwian(i) for i in a]
     for i in b:
         print(i)

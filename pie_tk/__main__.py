@@ -26,12 +26,12 @@ def main():
     elif arguments['rules']:
         language = arguments["<language>"]
         if language == "linearb":
-            from linearb import script
+            from linearb import __doc__ as doc
         elif language == "luwian":
-            from luwian import script
+            from luwian import __doc__ as doc
         elif language == "armenian":
-            from armenian import script
-        print(script)
+            from armenian import __doc__ as doc
+        print(doc)
 
 if __name__ == "__main__":
     main()

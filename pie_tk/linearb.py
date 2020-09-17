@@ -2,36 +2,11 @@
 
 """ Linear B script converter
 
-This scripts allows the user to convert between the latinized transliteration
-of Linear B and the Linear B Script itself with (almost) simple rules.
-
-The file can be imported as a module and contains the following functions:
-    alpha_to_linearb - returns a converted string in Linear B script from
-    a romanized string.
-    linearb_to_alpha - returns a converted string in romanized linear B from a
-    string in Linear B Script. (Might return problematic data due to double
-    readings for the same grapheme in Linear B)
-
-It also contains a dictionary:
-    script - contains the equivalences between romanized and Linear B scripts.
-
-Usage
------
-
-> a = ["a-pi-qo-i-ta do-e-ra MUL 32",
->      "ko-wa me-zo-e 5 ko-wa me-wi-jo-e 15",
->      "ko-wo me-wi-jo-e 4"]
-> b = [alpha_to_linearb(i) for i in a]
-> for i in b:
->     print(i)
-+ 𐀀𐀠𐀦𐀂𐀲 𐀈𐀁𐀨 𐂁 𐄒𐄈
-+ 𐀒𐀷 𐀕𐀿𐀁 𐄋 𐀒𐀷 𐀕𐀹𐀍𐀁 𐄐𐄋
-+ 𐀒𐀺 𐀕𐀹𐀍𐀁 𐄊
-> for i in b:
->     print(linearb_to_alpha(i))
-+ a-pi-qo-i-ta do-e-ra MUL 32
-+ ko-wa me-zo-e 5 ko-wa me-wi-jo-e 15
-+ ko-wo me-wi-jo-e 4
+Glyphs with known syllabic values should be written in lower-case, syllabically
+and numbered if +2. Glyphs with known logographic values should be written in
+upper-case. The only exception for said rule are the gendered logograms, which
+should be followed without space by a f or m. Glyphs with unknown value should
+be written with an asterisk followed by the number (2 or 3 digits).
 
 """
 

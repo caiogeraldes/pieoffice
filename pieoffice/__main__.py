@@ -16,6 +16,7 @@ Languages:
     cypriot             Cypriot Greek Script
     luwian              Hieroglyphic Luwian
     lycian              Lycian
+    lydian              Lydian
     armenian            Armenian
     avestan             Avestan (script)
     avestantranslit     Avestan (romanized)
@@ -43,6 +44,8 @@ def main():
             from pieoffice.luwian import alpha_to_luwian as conv
         elif language == "lycian":
             from pieoffice.lycian import alpha_to_lycian as conv
+        elif language == "lydian":
+            from pieoffice.lydian import alpha_to_lydian as conv
         elif language == "armenian":
             from pieoffice.armenian import alpha_to_armenian as conv
         elif language == "avestan":
@@ -72,6 +75,8 @@ def main():
             from pieoffice.luwian import __doc__ as doc
         elif language == "lycian":
             from pieoffice.lycian import __doc__ as doc
+        elif language == "lydian":
+            from pieoffice.lydian import __doc__ as doc
         elif language == "armenian":
             from pieoffice.armenian import __doc__ as doc
         elif language == "avestan" or language == "avestantranslit":
@@ -89,6 +94,7 @@ def main():
             cypriot             Cypriot Greek Script
             luwian              Hieroglyphic Luwian
             lycian              Lycian
+            lydian              Lydian
             armenian            Armenian
             avestan             Avestan (script)
             avestantranslit     Avestan (romanized)

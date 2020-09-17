@@ -8,8 +8,8 @@ So far, the mappings cover:
  - Proto-Indo-European (`pie_tk convert pie <text>`)
  <!-- - Vedic: Harvard-Kyoto transliteration to IAST (autoload/ie/vedichk.vim) -->
  <!-- - Old Persian Cuneiform (autoload/ie/oldpersian.vim) -->
- - Avestan: 
-     - Script (`pie_tk avestan convert <text>`) 
+ - Avestan:
+     - Script (`pie_tk avestan convert <text>`)
      - Transliterated (`pie_tk convert avestantranslit <text>`)
  <!-- - Old Church Slavonic Glagolitic (glagolitic) -->
  <!-- - Oscan Script (autoload/ie/oscan.vim) -->
@@ -23,7 +23,7 @@ So far, the mappings cover:
  - Anatolian:
     - Hieroglyphic Luwian (`pie_tk convert luwian <text>`)
     <!-- - Lydian (autoload/ie/lydian.vim) -->
-    <!-- - Lycian (autoload/ie/lycian.vim) -->
+    - Lycian (autoload/ie/lycian.vim)
     <!-- - Carian (autoload/ie/carian.vim) -->
 
 

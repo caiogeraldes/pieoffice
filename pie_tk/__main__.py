@@ -21,7 +21,7 @@ def main():
         if language == "pie":
             from pie import alpha_to_pie as conv
         if language == "linearb":
-            from linearb import alpha_to_linearb as conv
+            from .linearb import alpha_to_linearb as conv
         elif language == "luwian":
             from luwian import alpha_to_luwian as conv
         elif language == "armenian":

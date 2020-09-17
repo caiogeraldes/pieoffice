@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
         name="pieoffice",
-        version="1.0",
+        version="0.6",
         license="MIT",
         author="Caio Geraldes",
         author_email="caiogeraldes@protonmail.com",

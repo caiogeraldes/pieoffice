@@ -22,11 +22,43 @@ So far, the mappings cover:
     - Cypriot Syllabary (`pie_tk convert cypriot <text>`)
  - Anatolian:
     - Hieroglyphic Luwian (`pie_tk convert luwian <text>`)
-    <!-- - Lydian (autoload/ie/lydian.vim) -->
-    - Lycian (autoload/ie/lycian.vim)
+    - Lydian (`pie_tk convert lydian <text>`)
+    - Lycian (`pie_tk convert lycian <text>`)
     <!-- - Carian (autoload/ie/carian.vim) -->
 
+# Installation
 
+The easiest way so far is, if you have pip, to run:
+
+```bash
+pip install --user git+https://gitlab.com/caiogeraldes/pieoffice.git
+```
+
+And to upgrade:
+
+```bash
+pip install --upgrade git+https://gitlab.com/caiogeraldes/pieoffice.git
+```
+
+# Usage
+
+To figure out what are the languages available:
+
+```bash
+pieoffice list
+```
+
+To check the rules for a given language:
+
+```bash
+pieoffice rules <language>
+```
+
+To convert:
+
+```bash
+pieoffice convert <language> <text>
+```
 
 # TODO
 

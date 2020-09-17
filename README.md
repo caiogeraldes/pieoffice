@@ -14,7 +14,7 @@ So far, the mappings cover:
  <!-- - Old Church Slavonic Glagolitic (glagolitic) -->
  - Ogham Script (`pieoffice convert ogham <text>`)
  - Oscan Script (`pieoffice convert oscan <text>`)
- <!-- - Gothic (autoload/ie/gothic.vim) -->
+ - Gothic Script (`pieoffice convert gothic <text>`)
  - Armenian Script (`pieoffice convert armenian <text>`)
  - Greek:
     <!-- - Polytonic Greek (autoload/ie/polytonicgreek.vim) -->

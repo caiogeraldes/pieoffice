@@ -18,6 +18,7 @@ Languages:
     lycian              Lycian
     lydian              Lydian
     carian              Carian
+    gothic              Gothic
     armenian            Armenian
     avestan             Avestan (script)
     avestantranslit     Avestan (romanized)
@@ -51,6 +52,8 @@ def main():
             from pieoffice.lydian import alpha_to_lydian as conv
         elif language == "carian":
             from pieoffice.carian import alpha_to_carian as conv
+        elif language == "gothic":
+            from pieoffice.gothic import alpha_to_gothic as conv
         elif language == "armenian":
             from pieoffice.armenian import alpha_to_armenian as conv
         elif language == "avestan":
@@ -88,6 +91,8 @@ def main():
             from pieoffice.lydian import __doc__ as doc
         elif language == "carian":
             from pieoffice.carian import __doc__ as doc
+        elif language == "gothic":
+            from pieoffice.gothic import __doc__ as doc
         elif language == "armenian":
             from pieoffice.armenian import __doc__ as doc
         elif language == "avestan" or language == "avestantranslit":
@@ -111,6 +116,7 @@ def main():
             lycian              Lycian
             lydian              Lydian
             carian              Carian
+            gothic              Gothic
             armenian            Armenian
             avestan             Avestan (script)
             avestantranslit     Avestan (romanized)

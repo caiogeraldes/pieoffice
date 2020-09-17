@@ -19,7 +19,8 @@ Languages:
     ogham               Ogham Script
 
 Options:
-    -h or --help        this text
+    -h --help           Show this screen.
+
 """
 
 from docopt import docopt

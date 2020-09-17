@@ -22,7 +22,7 @@ ta      𐠭   |   te      𐠮   |   ti      𐠯   |    to      𐠰  |   tu  
 
 """
 
-from tools import get_key
+from pie_tk.tools import get_key
 
 
 

@@ -22,7 +22,7 @@ Included graphic marks:
 
 """
 
-from tools import get_key
+from pie_tk.tools import get_key
 
 script = {
     "EGO" : "𔐀",

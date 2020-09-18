@@ -48,10 +48,10 @@ def alpha_to_greek(input):
 
     output = beta_to_uni(input)
 
-    output = output.replace("s4", "Ϡ")
-    output = output.replace("*s4", "ϡ")
-    output = output.replace("s5", "ϻ")
-    output = output.replace("*s5", "Ϻ")
+    output = output.replace("σ4", "Ϡ")
+    output = output.replace("Σ4", "ϡ")
+    output = output.replace("σ5", "ϻ")
+    output = output.replace("Σ5", "Ϻ")
 
     return output
 

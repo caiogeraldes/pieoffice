@@ -6,6 +6,7 @@ with open("README.md", "r") as fh:
 setup(
         name="pieoffice",
         description="A terminal based script converter for ancient (Proto-)Indo-European languages.",
+        url="https://gitlab.com/caiogeraldes/pieoffice",
         long_description=long_description,
         long_description_content_type="text/markdown",
         version="1.0.0a",

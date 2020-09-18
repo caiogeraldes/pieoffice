@@ -23,7 +23,7 @@ So far, the mappings cover:
      - Gothic Script (`pieoffice convert gothic <text>`)
  - Armenian Script (`pieoffice convert armenian <text>`)
  - Greek:
-    <!-- - Polytonic Greek (autoload/ie/polytonicgreek.vim) -->
+    - Polytonic Greek (`pieoffice convert greek <text>`)
     - Mycenaean Linear B Script (`pieoffice convert linearb <text>`)
     - Cypriot Syllabary (`pieoffice convert cypriot <text>`)
  - Anatolian:

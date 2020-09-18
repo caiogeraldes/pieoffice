@@ -9,7 +9,7 @@ setup(
         url="https://gitlab.com/caiogeraldes/pieoffice",
         long_description=long_description,
         long_description_content_type="text/markdown",
-        version="1.0.2",
+        version="1.0.3",
         license="MIT",
         author="Caio Geraldes",
         author_email="caiogeraldes@protonmail.com",
@@ -24,5 +24,6 @@ setup(
             "License :: OSI Approved :: MIT License",
             "Operating System :: OS Independent",
         ],
+        install_requires=['betacode'],
         python_requires=">=3.6",
 )

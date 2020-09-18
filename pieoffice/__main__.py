@@ -12,6 +12,7 @@ Usage:
 
 Languages:
     pie                 Proto-Indo-European
+    greek               Polytonic Greek
     linearb             Mycenaean Libear B
     cypriot             Cypriot Greek Script
     luwian              Hieroglyphic Luwian
@@ -44,6 +45,8 @@ def main():
         language = arguments["<language>"]
         if language == "pie":
             from pieoffice.pie import alpha_to_pie as conv
+        if language == "greek":
+            from pieoffice.greek import alpha_to_greek as conv
         if language == "linearb":
             from pieoffice.linearb import alpha_to_linearb as conv
         elif language == "luwian":
@@ -87,6 +90,8 @@ def main():
         language = arguments["<language>"]
         if language == "pie":
             from pieoffice.pie import __doc__ as doc
+        if language == "greek":
+            from pieoffice.greek import __doc__ as doc
         if language == "linearb":
             from pieoffice.linearb import __doc__ as doc
         elif language == "luwian":
@@ -118,6 +123,7 @@ def main():
     if arguments['list']:
         print("""Languages:
             pie                 Proto-Indo-European
+            greek               Polytonic Greek
             linearb             Mycenaean Libear B
             cypriot             Cypriot Greek Script
             luwian              Hieroglyphic Luwian

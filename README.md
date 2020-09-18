@@ -56,6 +56,8 @@ To check the rules for a given language:
 pieoffice rules <language>
 ```
 
+[![asciicast](https://asciinema.org/a/CNfrRXIUSsyKjC18TxookzS25.svg)](https://asciinema.org/a/CNfrRXIUSsyKjC18TxookzS25)
+
 To convert:
 
 ```bash

@@ -46,7 +46,6 @@ def main():
         if language == "pie":
             from pieoffice.pie import alpha_to_pie as conv
         if language == "greek":
-            print('oi')
             from pieoffice.greek import alpha_to_greek as conv
         if language == "linearb":
             from pieoffice.linearb import alpha_to_linearb as conv

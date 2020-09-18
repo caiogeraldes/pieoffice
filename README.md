@@ -6,7 +6,11 @@ Generally, this project will lag behind the `pievim`, since it is being done in 
 
 So far, the mappings cover:
  - Proto-Indo-European (`pieoffice convert pie <text>`)
- - Iranian:
+ - Indic:
+    - Vedic / Sanscrit:
+        - Devanagari (`pieoffice vedic convert <text>`)
+        - IAST (`pieoffice vedictranslit convert <text>`)
+ - Iranic:
      - Avestan:
          - Script (`pieoffice avestan convert <text>`)
          - Transliterated (`pieoffice convert avestantranslit <text>`)

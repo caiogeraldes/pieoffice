@@ -9,7 +9,7 @@ Usage:
     pieoffice rules <language>
     pieoffice list
     pieoffice --help
-    
+
 Languages:
     pie                 Proto-Indo-European
     linearb             Mycenaean Libear B
@@ -20,6 +20,8 @@ Languages:
     carian              Carian
     gothic              Gothic
     armenian            Armenian
+    vedic               Vedic (HK>Devanagari)
+    vedictranslit       Vedic (HK>IAST)
     avestan             Avestan (script)
     avestantranslit     Avestan (romanized)
     oldpersian          Old Persian Cuneiform
@@ -56,6 +58,10 @@ def main():
             from pieoffice.gothic import alpha_to_gothic as conv
         elif language == "armenian":
             from pieoffice.armenian import alpha_to_armenian as conv
+        elif language == "vedic":
+            from pieoffice.vedic import hk_to_deva as conv
+        elif language == "vedictranslit":
+            from pieoffice.vedic import hk_to_iast as conv
         elif language == "avestan":
             from pieoffice.avestan import alpha_to_avestan as conv
         elif language == "avestantranslit":
@@ -97,6 +103,8 @@ def main():
             from pieoffice.armenian import __doc__ as doc
         elif language == "avestan" or language == "avestantranslit":
             from pieoffice.avestan import __doc__ as doc
+        elif language == "vedic" or language == "vedictranslit":
+            from pieoffice.vedic import __doc__ as doc
         elif language == "oldpersian":
             from pieoffice.oldpersian import __doc__ as doc
         elif language == "ogham":
@@ -118,6 +126,8 @@ def main():
             carian              Carian
             gothic              Gothic
             armenian            Armenian
+            vedic               Vedic (HK>Devanagari)
+            vedictranslit       Vedic (HK>IAST)
             avestan             Avestan (script)
             avestantranslit     Avestan (romanized)
             oldpersian          Old Persian Cuneiform

@@ -33,13 +33,13 @@ So far, the mappings cover:
 The easiest way so far is, if you have pip, to run:
 
 ```bash
-pip install --user git+https://gitlab.com/caiogeraldes/pieoffice.git
+pip install --user pieoffice
 ```
 
 And to upgrade:
 
 ```bash
-pip install --upgrade git+https://gitlab.com/caiogeraldes/pieoffice.git
+pip install --upgrade pieoffice
 ```
 
 # Usage

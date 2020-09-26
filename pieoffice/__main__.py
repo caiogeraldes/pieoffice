@@ -11,23 +11,23 @@ Usage:
     pieoffice --help
 
 Languages:
-    pie                 Proto-Indo-European
-    greek               Polytonic Greek
-    linearb             Mycenaean Libear B
-    cypriot             Cypriot Greek Script
-    luwian              Hieroglyphic Luwian
-    lycian              Lycian
-    lydian              Lydian
-    carian              Carian
-    gothic              Gothic
-    armenian            Armenian
-    vedic               Vedic (HK>Devanagari)
-    vedictranslit       Vedic (HK>IAST)
-    avestan             Avestan (script)
-    avestantranslit     Avestan (romanized)
-    oldpersian          Old Persian Cuneiform
-    ogham               Ogham Script
-    oscan               Oscan (Old Italic Script)
+    pie                             Proto-Indo-European
+    greek                           Polytonic Greek
+    linearb                         Mycenaean Libear B
+    cypriot                         Cypriot Greek Script
+    luwian                          Hieroglyphic Luwian
+    lycian                          Lycian
+    lydian                          Lydian
+    carian                          Carian
+    gothic                          Gothic
+    armenian                        Armenian
+    vedic / sanskrit                Vedic / Sanskrit (HK>Devanagari)
+    vedictranslit /sanskrithk       Vedic / Sanskrit (HK>IAST)
+    avestan                         Avestan (script)
+    avestantranslit                 Avestan (romanized)
+    oldpersian                      Old Persian Cuneiform
+    ogham                           Ogham Script
+    oscan                           Oscan (Old Italic Script)
 
 Options:
     -h --help           Show this screen.
@@ -61,9 +61,9 @@ def main():
             from pieoffice.gothic import alpha_to_gothic as conv
         elif language == "armenian":
             from pieoffice.armenian import alpha_to_armenian as conv
-        elif language == "vedic":
+        elif language == "vedic" or language == "sanskrit":
             from pieoffice.vedic import hk_to_deva as conv
-        elif language == "vedictranslit":
+        elif language == "vedictranslit" or language == "sanskrithk":
             from pieoffice.vedic import hk_to_iast as conv
         elif language == "avestan":
             from pieoffice.avestan import alpha_to_avestan as conv
@@ -108,7 +108,7 @@ def main():
             from pieoffice.armenian import __doc__ as doc
         elif language == "avestan" or language == "avestantranslit":
             from pieoffice.avestan import __doc__ as doc
-        elif language == "vedic" or language == "vedictranslit":
+        elif language in ["vedic", "vedictranslit", "sanskrit", "sanskrithk"]:
             from pieoffice.vedic import __doc__ as doc
         elif language == "oldpersian":
             from pieoffice.oldpersian import __doc__ as doc
@@ -122,23 +122,23 @@ def main():
 
     if arguments['list']:
         print("""Languages:
-            pie                 Proto-Indo-European
-            greek               Polytonic Greek
-            linearb             Mycenaean Libear B
-            cypriot             Cypriot Greek Script
-            luwian              Hieroglyphic Luwian
-            lycian              Lycian
-            lydian              Lydian
-            carian              Carian
-            gothic              Gothic
-            armenian            Armenian
-            vedic               Vedic (HK>Devanagari)
-            vedictranslit       Vedic (HK>IAST)
-            avestan             Avestan (script)
-            avestantranslit     Avestan (romanized)
-            oldpersian          Old Persian Cuneiform
-            ogham               Ogham Script
-            oscan               Oscan (Old Italic Script)
+            pie                             Proto-Indo-European
+            greek                           Polytonic Greek
+            linearb                         Mycenaean Libear B
+            cypriot                         Cypriot Greek Script
+            luwian                          Hieroglyphic Luwian
+            lycian                          Lycian
+            lydian                          Lydian
+            carian                          Carian
+            gothic                          Gothic
+            armenian                        Armenian
+            vedic / sanskrit                Vedic / Sanskrit (HK>Devanagari)
+            vedictranslit /sanskrithk       Vedic / Sanskrit (HK>IAST)
+            avestan                         Avestan (script)
+            avestantranslit                 Avestan (romanized)
+            oldpersian                      Old Persian Cuneiform
+            ogham                           Ogham Script
+            oscan                           Oscan (Old Italic Script)
             """
             )
 

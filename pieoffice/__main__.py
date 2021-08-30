@@ -42,8 +42,6 @@ def main():
 
     rules = False
 
-    print(arguments)
-
     if arguments["convert"]:
         language = arguments["<language>"]
         # print(arguments["--type"])
@@ -79,9 +77,10 @@ def main():
         elif language == "vedictranslit" or language == "sanskrithk":
             from pieoffice.vedic import hk_to_iast as conv
         elif language == "avestan":
-            from pieoffice.avestan import alpha_to_avestan as conv
-        elif language == "avestantranslit":
-            from pieoffice.avestan import alpha_to_avestan_trans as conv
+            if arguments["TYPE"] == "translit":
+                from pieoffice.avestan import alpha_to_avestan_trans as conv
+            else:
+                from pieoffice.avestan import alpha_to_avestan as conv
         elif language == "oldpersian":
             from pieoffice.oldpersian import alpha_to_oldpersian as conv
         elif language == "ogham":

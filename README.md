@@ -13,7 +13,7 @@ So far, the mappings cover:
  - Iranic:
      - Avestan:
          - Script (`pieoffice avestan convert <text>`)
-         - Transliterated (`pieoffice convert avestantranslit <text>`)
+         - Transliterated (`pieoffice convert avestan <text> -t translit`)
      - Old Persian Cuneiform (`pieoffice convert oldpersian <text>`)
  - Celtic:
      - Ogham Script (`pieoffice convert ogham <text>`)
@@ -21,7 +21,11 @@ So far, the mappings cover:
      - Oscan Script (`pieoffice convert oscan <text>`)
  - Germanic:
      - Gothic Script (`pieoffice convert gothic <text>`)
- - Armenian Script (`pieoffice convert armenian <text>`)
+ - Armenian:
+     - Script (`pieoffice convert armenian <text>` or `pieoffice convert armenian <text> -t armenian`)
+     - Script, Maiscules only (`pieoffice convert armenian <text> -t maiscules`)
+     - Romanized in ISO (`pieoffice convert armenian <text> -t iso`)
+     - Romanized in Classical (`pieoffice convert armenian <text> -t maiscules`)
  - Greek:
     - Polytonic Greek (`pieoffice convert greek <text>`)
     - Mycenaean Linear B Script (`pieoffice convert linearb <text>`)

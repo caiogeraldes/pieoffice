@@ -1,0 +1,39 @@
+[[package]]
+name = "betacode"
+version = "1.0"
+description = "Betacode to Unicode converter."
+category = "main"
+optional = false
+python-versions = "*"
+
+[[package]]
+name = "docopt"
+version = "0.6.2"
+description = "Pythonic argument parser, that will make you smile"
+category = "main"
+optional = false
+python-versions = "*"
+
+[[package]]
+name = "pygtrie"
+version = "2.4.2"
+description = "A pure Python trie data structure implementation."
+category = "main"
+optional = false
+python-versions = "*"
+
+[metadata]
+lock-version = "1.1"
+python-versions = "^3.6"
+content-hash = "47c4289a0df1463a7e0b8ce15b66dc0f954924f1402b562dd49a554233975ba8"
+
+[metadata.files]
+betacode = [
+    {file = "betacode-1.0.tar.gz", hash = "sha256:259b678e8ce901e8735196d248c9c2ad42a388e990fd8383f972d1b5539b0469"},
+]
+docopt = [
+    {file = "docopt-0.6.2.tar.gz", hash = "sha256:49b3a825280bd66b3aa83585ef59c4a8c82f2c8a522dbe754a8bc8d08c85c491"},
+]
+pygtrie = [
+    {file = "pygtrie-2.4.2.tar.gz", hash = "sha256:43205559d28863358dbbf25045029f58e2ab357317a59b11f11ade278ac64692"},
+]

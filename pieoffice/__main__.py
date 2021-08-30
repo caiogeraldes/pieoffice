@@ -5,7 +5,7 @@
 A terminal based script converter for ancient (Proto-)Indo-European languages.
 
 Usage:
-    pieoffice convert <language> [<text>]
+    pieoffice convert <language> <text> [--type TYPE]
     pieoffice rules <language>
     pieoffice list
     pieoffice --help
@@ -30,6 +30,7 @@ Languages:
     oscan                           Oscan (Old Italic Script)
 
 Options:
+    -t --type           Type of transliteration
     -h --help           Show this screen.
 
 """
@@ -41,8 +42,11 @@ def main():
 
     rules = False
 
+    print(arguments)
+
     if arguments["convert"]:
         language = arguments["<language>"]
+        # print(arguments["--type"])
         if language == "pie":
             from pieoffice.pie import alpha_to_pie as conv
         if language == "greek":
@@ -60,7 +64,16 @@ def main():
         elif language == "gothic":
             from pieoffice.gothic import alpha_to_gothic as conv
         elif language == "armenian":
-            from pieoffice.armenian import alpha_to_armenian as conv
+            from pieoffice.armenian import AsciiConverter
+            if arguments["TYPE"] == "iso":
+                ascii_conv = AsciiConverter("iso")
+            elif arguments["TYPE"] == "classical":
+                ascii_conv = AsciiConverter("classical")
+            elif arguments["TYPE"] == "maiscules":
+                ascii_conv = AsciiConverter("armenian_maiscules")
+            else:
+                ascii_conv = AsciiConverter()
+            conv = ascii_conv.converter
         elif language == "vedic" or language == "sanskrit":
             from pieoffice.vedic import hk_to_deva as conv
         elif language == "vedictranslit" or language == "sanskrithk":

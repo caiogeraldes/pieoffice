@@ -12,165 +12,303 @@ Accents should be placed as following for DEVANAGARI
 Otherwise, use ´, /, `. \\ and =, ^
 """
 
+import re
 
-hk_dv_unicode = {'M': '\u0902', 'H': '\u0903',
-                 'a': '\u0905', 'A': '\u0906', 'i': '\u0907', 'I': '\u0908',
-                 'u': '\u0909', 'U': '\u090A', 'R': '\u090B', 'RR': '\u0960', 'lR': '\u090C',
-                 'e': '\u090F', 'ai': '\u0910', 'o': '\u0913', 'au': '\u0914',
-                 'k': '\u0915', 'kh': '\u0916', 'g': '\u0917', 'gh': '\u0918', 'G': '\u0919',
-                 'c': '\u091A', 'ch': '\u091B', 'j': '\u091C', 'jh': '\u091D', 'J': '\u091E',
-                 'T': '\u091F', 'Th': '\u0920', 'D': '\u0921', 'Dh': '\u0922', 'N': '\u0923',
-                 't': '\u0924', 'th': '\u0925', 'd': '\u0926', 'dh': '\u0927', 'n': '\u0928',
-                 'p': '\u092A', 'ph': '\u092B', 'b': '\u092C', 'bh': '\u092D', 'm': '\u092E',
-                 'y': '\u092F', 'r': '\u0930', 'l': '\u0932', 'v': '\u0935',
-                 'z': '\u0936', 'S': '\u0937', 's': '\u0938', 'h': '\u0939',
-                 "'": '\u093D', 'oM': '\u0950', ' ': ' ', '|': '\u0964', '||': '\u0964',
-                 "=": "॒", "+": "॑"}
-hk_dv_vowel_diacritics = {'A': '\u093E', 'a': '',
-                          'i': '\u093F', 'I': '\u0940',
-                          'u': '\u0941', 'U': '\u0942',
-                          'R': '\u0943', 'RR': '\u0944',
-                          'lR': '\u0962',
-                          'e': '\u0947', 'ai': '\u0948',
-                          'o': '\u094b', 'au': '\u094C'}
-hk_dv_vowels = ['A', 'a', 'i', 'I', 'u', 'U',
-                'R', 'RR',
-                'lR', 'e', 'ai', 'o', 'au']
-hk_dv_consonants = ['k', 'g', 'G',
-                    'c', 'j', 'J',
-                    'T', 'D', 'N',
-                    't', 'd', 'n',
-                    'p', 'b', 'm',
-                    'y', 'r', 'l', 'v',
-                    'z', 'S', 's', 'h']
-hk_dv_special_consonants = ['G', 'J', 'N', 'n', 'm',
-                            'y', 'r', 'l', 'v',
-                            'z', 'S', 's']
-hk_dv_diacritics = ['M', 'H', '\'', '=', "+"]
-hk_dv_punctuation = ['|', '||']
+ASCII_HK_TO_DEVA = (
+    (r"([\n ]|^)ai", r"\1ऐ"),
+    (r"([\n ]|^)au", r"\1औ"),
+    (r"([\n ]|^)a", r"\1अ"),
+    (r"([\n ]|^)A", r"\1आ"),
+    (r"([\n ]|^)i", r"\1इ"),
+    (r"([\n ]|^)I", r"\1ई"),
+    (r"([\n ]|^)u", r"\1उ"),
+    (r"([\n ]|^)U", r"\1ऊ"),
+    (r"([\n ]|^)e", r"\1ए"),
+    (r"([\n ]|^)o", r"\1ओ"),
+    (r"([\n ]|^)lR", r"\1लृ"),
+    (r"([\n ]|^)lRR", r"\1लॄ"),
+    (r"([\n ]|^)RR", r"\1ॠ"),
+    (r"([\n ]|^)R", r"\1ऋ"),
+    (r"ai", "V ै ै"),
+    (r"au", "V ौ"),
+    (r"a", "V "),
+    (r"A", "V ा"),
+    (r"i", "V ि"),
+    (r"I", "V ी"),
+    (r"u", "V ु"),
+    (r"U", "V ू"),
+    (r"e", "V े"),
+    (r"o", "V ो"),
+    (r"lRR", "V ॣ"),
+    (r"lR", "V ॢ"),
+    (r"RR", "V ॄ"),
+    (r"R", "V ृ"),
+    (r"khV ", "ख"),
+    (r"ghV ", "घ"),
+    (r"chV ", "छ"),
+    (r"jhV ", "झ"),
+    (r"ThV ", "ठ"),
+    (r"DhV ", "ढ"),
+    (r"thV ", "थ"),
+    (r"dhV ", "ध"),
+    (r"phV ", "फ"),
+    (r"bhV ", "भ"),
+    (r"kV ", "क"),
+    (r"gV ", "ग"),
+    (r"GV ", "ङ"),
+    (r"cV ", "च"),
+    (r"jV ", "ज"),
+    (r"JV ", "ञ"),
+    (r"TV ", "ट"),
+    (r"DV ", "ड"),
+    (r"NV ", "ण"),
+    (r"tV ", "त"),
+    (r"dV ", "द"),
+    (r"nV ", "न"),
+    (r"pV ", "प"),
+    (r"bV ", "ब"),
+    (r"mV ", "म"),
+    (r"yV ", "य"),
+    (r"rV ", "र"),
+    (r"lV ", "ल"),
+    (r"vV ", "व"),
+    (r"zV ", "श"),
+    (r"SV ", "ष"),
+    (r"sV ", "स"),
+    (r"LLV ", "ऴ"),
+    (r"LV ", "ळ"),
+    (r"hV ", "ह"),
+    (r"kh", "ख्"),
+    (r"gh", "घ्"),
+    (r"ch", "छ्"),
+    (r"jh", "झ्"),
+    (r"Th", "ठ्"),
+    (r"Dh", "ढ्"),
+    (r"th", "थ्"),
+    (r"dh", "ध्"),
+    (r"ph", "फ्"),
+    (r"bh", "भ्"),
+    (r"k", "क्"),
+    (r"g", "ग्"),
+    (r"G", "ङ्"),
+    (r"c", "च्"),
+    (r"j", "ज्"),
+    (r"J", "ञ्"),
+    (r"T", "ट्"),
+    (r"D", "ड्"),
+    (r"N", "ण्"),
+    (r"t", "त्"),
+    (r"d", "द्"),
+    (r"n", "न्"),
+    (r"p", "प्"),
+    (r"b", "ब्"),
+    (r"m", "म्"),
+    (r"y", "य्"),
+    (r"r", "र्"),
+    (r"l", "ल्"),
+    (r"v", "व्"),
+    (r"z", "श्"),
+    (r"S", "ष्"),
+    (r"s", "स्"),
+    (r"LL", "ऴ्"),
+    (r"L", "ळ्"),
+    (r"h", "ह्"),
+
+    (r"M", "\u0902"),
+    (r"H", "\u0903"),
+    (r"\\", "\u0951"),
+    (r"=", "\u0952"),
+    (r"&", "\u0901"),
+    (r"'", "ऽ"),
+
+    (r"V ", " "),
+
+    (r"1", "१"),
+    (r"2", "२"),
+    (r"3", "३"),
+    (r"4", "४"),
+    (r"5", "५"),
+    (r"6", "६"),
+    (r"7", "७"),
+    (r"8", "८"),
+    (r"9", "९"),
+    (r"0", "०"),
+
+    (r"\|\|", "॥"),
+    (r"\|", "।"),
+
+    (r"(\u094d)[\u0951\u0952]\\", r"\1"),
+    (r"\/[\u0951\u0952]", r""),
+)
 
 
-def hk_to_deva(input_text):
+ASCII_HK_TO_IAST = (
+    (r"A", "ā"),
+    (r"I", "ī"),
+    (r"U", "ū"),
+    (r"lRR", "ḹ"),
+    (r"lR", "ḷ"),
+    (r"RR", "ṝ"),
+    (r"R", "ṛ"),
+    (r"T", "ṭ"),
+    (r"D", "ḍ"),
+    (r"G", "ṅ"),
+    (r"J", "ñ"),
+    (r"N", "ṇ"),
+    (r"z", "ś"),
+    (r"S", "ṣ"),
+    (r"L", "l̠"),
+    (r"\\", "\u0300"),
+    (r"/", "\u0301"),
+    (r"MM", "ṁ"),
+    (r"M", "ṃ"),
+    (r"H", "ḥ"),
+    (r"&", "m̐")
+)
 
-    """
-    :param input_text: Text to be transliterated, written in Harvard-Kyoto.
-    :return: Text in Devanagari.
-    """
+ASCII_HK_TO_ISO = (
+    (r"A", "ā"),
+    (r"I", "ī"),
+    (r"U", "ū"),
+    (r"e", "ē"),
+    (r"o", "ō"),
+    (r"lRR", "l̥̄"),
+    (r"lR", "l̥"),
+    (r"RR", "r̥̄"),
+    (r"R", "r̥"),
+    (r"T", "ṭ"),
+    (r"D", "ḍ"),
+    (r"G", "ṅ"),
+    (r"J", "ñ"),
+    (r"N", "ṇ"),
+    (r"z", "ś"),
+    (r"S", "ṣ"),
+    (r"L", "ḷ"),
 
-    if input_text[-1] != ' ':
-        input_text = input_text.center(len(input_text) + 2)
-    output_text = []
-    i = -1
+    (r"MM", "ṃ"),
+    (r"M", "ṁ"),
+    (r"H", "ḥ"),
+    (r"\\", "\u0300"),
+    (r"/", "\u0301"),
+    (r"&", "m̐")
+)
 
-    for letter in input_text:
-        i += 1
-        if letter == " ":
-            output_text.append(" ")
-        elif letter not in hk_dv_unicode:
-            output_text.append(letter)
+
+def hkUdToHkAnu(hkUdStr):
+    hkSyllab = hkToSyllables(hkUdStr)
+    hkAcc = hkAccentuation(hkSyllab)
+
+    hkSyllabArray = hkSyllab.split(".")
+    hkAnuAcc = list(udToAnu(hkAcc))
+
+    hkAnuStr = map(anudatta_apply, hkAnuAcc, hkSyllabArray)
+
+    return("".join(list(hkAnuStr)))
+
+
+def anudatta_apply(accent, syllabe):
+    if accent == "A":
+        return (syllabe + "=")
+    elif accent == "S":
+        return (syllabe + "\\")
+    else:
+        return syllabe.replace("/", "")
+
+
+def hkToSyllables(hkStr):
+    hkSyllab = hkStr
+    hkSyllab = re.sub(r"([aeiouAEIOUR])", r"\1.", hkSyllab)
+    hkSyllab = re.sub(r"a\.([ui])\.", r"a\1.", hkSyllab)
+    hkSyllab = re.sub(r"\.\/", r"/.", hkSyllab)
+    hkSyllab = re.sub(r"\.([HM&])", r"\1.", hkSyllab)
+    hkSyllab = re.sub(r"R\.R", r"RR", hkSyllab)
+
+    hkSyllab = re.sub(r"\.$", "", hkSyllab)
+
+    return hkSyllab
+
+
+def hkAccentuation(hkSyllab):
+    hkAcc = []
+    hkSyllab_list = hkSyllab.split(".")
+
+    for syllabe in hkSyllab_list:
+        if "/" in syllabe:
+            hkAcc.append("U")
         else:
-            if letter in hk_dv_vowels:
-                if letter == 'a':
-                    if input_text[i + 1] == 'i':
-                        if input_text[i - 1] in hk_dv_consonants:
-                            output_text.append(hk_dv_vowel_diacritics['ai'])
-                        else:
-                            output_text.append(hk_dv_unicode['ai'])
-                    elif input_text[i + 1] == 'u':
-                        if input_text[i - 1] in hk_dv_consonants:
-                            output_text.append(hk_dv_vowel_diacritics['au'])
-                        else:
-                            output_text.append(hk_dv_unicode['au'])
-                    else:
-                        if input_text[i - 1] in hk_dv_consonants:
-                            output_text.append('')
-                        else:
-                            output_text.append(hk_dv_unicode[letter])
-                elif letter == 'i' or letter == 'u':
-                    if input_text[i - 1] == 'a':
-                        continue
-                    else:
-                        if input_text[i - 1] in hk_dv_consonants:
-                            output_text.append(hk_dv_vowel_diacritics[letter])
-                        else:
-                            output_text.append(hk_dv_unicode[letter])
-                elif letter == 'R':
-                    if input_text[i + 1] == 'R':
-                        if input_text[i - 1] in hk_dv_consonants:
-                            output_text.append(hk_dv_vowel_diacritics['RR'])
-                        else:
-                            output_text.append(hk_dv_unicode['RR'])
-                    elif input_text[i - 1] == 'R' or input_text[i - 1] == 'l':
-                        continue
-                    else:
-                        if input_text[i - 1] in hk_dv_consonants:
-                            output_text.append(hk_dv_vowel_diacritics[letter])
-                        else:
-                            output_text.append(hk_dv_unicode[letter])
-                else:
-                    if input_text[i - 1] in hk_dv_consonants:
-                        output_text.append(hk_dv_vowel_diacritics[letter])
-                    else:
-                        output_text.append(hk_dv_unicode[letter])
-            elif letter in hk_dv_consonants:
-                if letter == 'l' and input_text[i + 1] == 'R':
-                    if input_text[i - 1] in hk_dv_consonants:
-                        output_text.append(hk_dv_vowel_diacritics['lR'])
-                    else:
-                        output_text.append(hk_dv_unicode['lR'])
-                elif input_text[i + 1] == 'h' and letter not in hk_dv_special_consonants:
-                    output_text.append(hk_dv_unicode['%sh' % letter])
-                elif letter == 'h' and input_text[i - 1] in hk_dv_consonants:
-                    if input_text[i+1] not in hk_dv_vowels:
-                        output_text.append('\u094D')
-                elif input_text[i + 1] not in hk_dv_vowels:
-                    output_text.append(hk_dv_unicode[letter])
-                    output_text.append('\u094D')
-                else:
-                    output_text.append(hk_dv_unicode[letter])
-            else:
-                output_text.append(hk_dv_unicode[letter])
-
-    output_text = "".join(output_text)
-    output_text = output_text.strip()
-    return output_text
+            hkAcc.append("B")
+    return ("".join(hkAcc))
 
 
-def hk_to_iast(input):
-    output = input
+def udToAnu(udStr):
+    """
+     Converts a string of udatta marked syllables to
+     an anudatta marked one. Notation:
+     U = udatta
+     A = anudatta
+     S = svarita
+     B = unmarked in udatta notation
+     D = unmarked in anudatta notation
 
-    output = output.replace("a/", "á")
-    output = output.replace("i/", "í")
-    output = output.replace("u/", "ú")
-    output = output.replace("e/", "é")
-    output = output.replace("o/", "ó")
-    output = output.replace("A/", "ā́")
-    output = output.replace("I/", "ī́")
-    output = output.replace("U/", "ū́")
-    output = output.replace("A", "ā")
-    output = output.replace("I", "ī")
-    output = output.replace("U", "ū")
-    output = output.replace("lRR/", "l̥̄́")
-    output = output.replace("lRR ", "l̥̄")
-    output = output.replace("lR/", "ĺ̥")
-    output = output.replace("lR", "l̥")
-    output = output.replace("RR/", "r̥̄́")
-    output = output.replace("RR", "r̥̄")
-    output = output.replace("R/", "ŕ̥")
-    output = output.replace("R", "r̥")
-    output = output.replace("T", "ṭ")
-    output = output.replace("D", "ḍ")
-    output = output.replace("N", "ṇ")
-    output = output.replace("S", "ṣ")
-    output = output.replace("z", "ś")
-    output = output.replace("L", "ḷ")
-    output = output.replace("H", "ḥ")
-    output = output.replace("M", "ṃ")
-    output = output.replace("G", "ṅ")
-    output = output.replace("J", "ñ")
-    output = output.replace("&", "m̐")
+     Example:
+     >>> udToAnu('BBUBBUUB')
+     "AADSADDS"
+    """
 
-    return output
+    anuStr = udStr
 
-if __name__ == '__main__':
-    print(hk_to_deva("svaritaH - a+"))
+    anuStr = re.sub(r"BU",  "AU", anuStr)
+    anuStr = re.sub(r"UB",  "US", anuStr)
+    anuStr = re.sub(r"U",   "D", anuStr)
+
+    while ("BA" in anuStr or "BD" in anuStr):
+        anuStr = re.sub(r"^(B*)[BD](A)",    r"\1A\2", anuStr)
+        anuStr = re.sub(r"\n(B*)[BD](A)",   r"\1A\2", anuStr)
+        anuStr = re.sub(r"([ADSB])B([AD])", r"\1D\2", anuStr)
+        anuStr = re.sub(r"B$", "D", anuStr)
+
+    return anuStr
+
+
+class AsciiConverter:
+    def __init__(self, scheme="hk_to_deva", udatta_to_anudatta=True):
+        self.udata_to_anudatta = udatta_to_anudatta
+        if scheme == "hk_to_deva":
+            self.scheme = "hk_to_deva"
+            self.script_set = ASCII_HK_TO_DEVA
+        elif scheme == "hk_to_iast":
+            self.scheme = "hk_to_iast"
+            self.script_set = ASCII_HK_TO_IAST
+            self.udata_to_anudatta = False
+        elif scheme == "hk_to_iso":
+            self.scheme = "hk_to_iso"
+            self.script_set = ASCII_HK_TO_ISO
+            self.udata_to_anudatta = False
+
+    def converter(self, ascii_text):
+        if self.udata_to_anudatta and self.scheme == "hk_to_deva":
+            output = hkUdToHkAnu(ascii_text)
+        elif self.scheme == "hk_to_deva":
+            output = "".join((filter(lambda x: x not in ["/"], ascii_text)))
+        else:
+            output = ascii_text
+
+        for pair in self.script_set:
+            output = re.sub(pair[0], pair[1], output)
+        return output
+
+
+if __name__ == "__main__":
+    deva = "अ॒ग्निमी॑ळे पु॒रोहि॑तं य॒ज्ञस्य॑ दे॒वमृ॒त्विज॑म्"
+    hk = "agni/mILe puro/hitaM yajJa/sya deva/mRtvi/jam"
+
+    ascii_replace = AsciiConverter(
+        scheme="hk_to_deva", udatta_to_anudatta=True)
+    print(ascii_replace.converter(hk))
+    print(ascii_replace.converter(hk) == deva)
+    ascii_replace = AsciiConverter(
+        scheme="hk_to_deva", udatta_to_anudatta=False
+        )
+    print(ascii_replace.converter(hk))
+
+

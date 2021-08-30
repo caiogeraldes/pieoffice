@@ -21,10 +21,8 @@ Languages:
     carian                          Carian
     gothic                          Gothic
     armenian                        Armenian
-    vedic / sanskrit                Vedic / Sanskrit (HK>Devanagari)
-    vedictranslit /sanskrithk       Vedic / Sanskrit (HK>IAST)
-    avestan                         Avestan (script)
-    avestantranslit                 Avestan (romanized)
+    vedic / sanskrit                Vedic / Sanskrit (entry with Harvard-Kyoto)
+    avestan                         Avestan
     oldpersian                      Old Persian Cuneiform
     ogham                           Ogham Script
     oscan                           Oscan (Old Italic Script)
@@ -73,14 +71,21 @@ def main():
                 ascii_conv = AsciiConverter()
             conv = ascii_conv.converter
         elif language == "vedic" or language == "sanskrit":
-            from pieoffice.vedic import hk_to_deva as conv
-        elif language == "vedictranslit" or language == "sanskrithk":
-            from pieoffice.vedic import hk_to_iast as conv
-        elif language == "avestan":
-            if arguments["TYPE"] == "translit":
-                from pieoffice.avestan import alpha_to_avestan_trans as conv
+            from pieoffice.vedic import AsciiConverter
+            if arguments["TYPE"] == "iso":
+                ascii_conv = AsciiConverter("hk_to_iso")
+            elif arguments["TYPE"] == "iast":
+                ascii_conv = AsciiConverter("hk_to_iast")
             else:
-                from pieoffice.avestan import alpha_to_avestan as conv
+                ascii_conv = AsciiConverter()
+            conv = ascii_conv.converter
+        elif language == "avestan":
+            from pieoffice.avestan import AsciiConverter
+            if arguments["TYPE"] == "translit":
+                ascii_conv = AsciiConverter("roman-hoffman")
+            else:
+                ascii_conv = AsciiConverter("script")
+            conv = ascii_conv.converter
         elif language == "oldpersian":
             from pieoffice.oldpersian import alpha_to_oldpersian as conv
         elif language == "ogham":
